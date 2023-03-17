@@ -44,7 +44,6 @@
   }
   .transition__route-enter-from,
   .transition__route-leave-to {
-    //opacity: 1;
-    filter: blur(50);
+    opacity: 0;
   }
 </style>
