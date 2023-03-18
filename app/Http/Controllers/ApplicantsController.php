@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Applicants;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ApplicantsResource;
 
 class ApplicantsController extends Controller
 {
   public function index() {
-    $data = Applicants::all();
-    return response()->json($data);
+    // $data = Applicants::all();
+    // return response()->json($data);
+    return ApplicantsResource::collection(Applicants::all());
   }
 
   public function store(Request $req) {

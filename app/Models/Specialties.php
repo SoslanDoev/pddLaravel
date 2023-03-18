@@ -15,8 +15,7 @@ class Specialties extends Model
       'name', 'updated_at', 'created_at',
     ];
 
-    // Связь с дисциплиной
-    public function applicants() { 
+    public function enrollee() { 
       return $this->belongsTo(Applicants::class, 'speciality_id', 'id');
     }
 }

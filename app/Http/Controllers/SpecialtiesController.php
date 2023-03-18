@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Specialties;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\SpecialtiesResource;
 
 class SpecialtiesController extends Controller
 {
   public function index() {
-    $data = Specialties::all();
-    return response()->json($data);
+    // $data = Specialties::all();
+    // return response()->json($data);
+    return SpecialtiesResource::collection(Specialties::paginate(10));
   }
 
   public function store(Request $req) {

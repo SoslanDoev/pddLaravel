@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Results;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ResultsResource;
 
 class ResultsController extends Controller
 {
   public function index() {
-    $data = Results::all();
-    return response()->json($data);
+    // $data = Results::all();
+    // return response()->json($data);
+    return ResultsResource::collection(Results::paginate(10));
   }
 
   public function store(Request $req) {

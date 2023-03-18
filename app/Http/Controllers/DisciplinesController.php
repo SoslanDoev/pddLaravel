@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Disciplines;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\DisciplinesResource;
 
 class DisciplinesController extends Controller
 {
   public function index() {
-    $data = Disciplines::all();
-    return response()->json($data);
+    // $data = Disciplines::all();
+    // return response()->json($data);
+    return DisciplinesResource::collection(Disciplines::all());
   }
 
   public function store(Request $req) {

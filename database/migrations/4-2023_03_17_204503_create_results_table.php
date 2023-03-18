@@ -15,7 +15,7 @@ return new class extends Migration
           $table->id();
           $table->foreignId('enrollee_id')->constrained('applicants')->cascadeOnDelete(); // Связь c абитуриентом
           $table->foreignId('discipline_id')->constrained('disciplines')->cascadeOnDelete(); // Связь с дисциплиной
-          $table->integer('rating'); // Баллы
+          $table->integer('grade');
           $table->timestamps();
         });
     }

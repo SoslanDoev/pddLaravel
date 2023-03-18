@@ -16,8 +16,11 @@ class Applicants extends Model
       'name', 'surname', 'patronymic', 'speciality_id',
     ];
 
-    // Связь со специальностью
     public function speciality() {
-      return $this->hasOne(Specialties::class, 'speciality_id', 'id');
+      return $this->belongsTo(Specialties::class, 'speciality_id', 'id');
+    }
+
+    public function result() {
+      return $this->hasOne(Results::class, 'id');
     }
 }
