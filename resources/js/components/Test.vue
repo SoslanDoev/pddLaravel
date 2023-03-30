@@ -5,7 +5,7 @@
       <vUserTable :table="$store.state.applicants.data"/>
       </div>
       <div class="test__info">
-        <ul id="navigation__list" class="navigation__list">
+        <ul id="navigation__list" class="test__info-list navigation__list">
           <li class="navigation__item" v-for="item in navigationList" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
             <a href="#" @click.prevent="item.active = !item.active" class="navigation__link">{{ item.name }}</a>
             <Transition name="fade" mode="out-in">

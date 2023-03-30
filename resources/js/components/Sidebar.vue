@@ -8,8 +8,8 @@
     </div>
 
     <ul id="navigation__list" class="navigation__list">
-      <li class="navigation__item" v-for="item in specList" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
-        <a href="#" @click.prevent="item.active = !item.active, abit(item.id)" class="navigation__link">{{ item.name }}</a>
+      <li class="navigation__item" v-for="item in specList" :key="item.id" :class="{'navigation__menu--active': active == item.id}">
+        <a href="#" @click.prevent="active = item.id, abit(item.id)" class="navigation__link">{{ item.name }}</a>
       </li>
     </ul>
 
@@ -41,6 +41,7 @@
     name: "vSidebar",
     data() {
       return {
+        active: null,
         specList: this.$store.state.spec.spec,
         exampleGifsActive: false,
         exampleImage: '',
