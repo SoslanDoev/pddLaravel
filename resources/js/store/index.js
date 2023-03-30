@@ -1,4 +1,6 @@
+import axios from 'axios'
 import { createStore } from 'vuex'
+import spec from './Spec/index'
 
 export default createStore({
   state: {
@@ -14,7 +16,7 @@ export default createStore({
       return state.menuVisible
     },
   },
-  mutations: {
+  mutations: { // Синхронность
     GET_LOCAL_STORAGE(state) {
       state.complexityFunction = localStorage.getItem('complexity')
       state.speedFunction = localStorage.getItem('speed')
@@ -42,5 +44,6 @@ export default createStore({
     // Пользователи 
   },
   modules: {
+    spec
   }
 })

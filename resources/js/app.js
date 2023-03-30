@@ -11,7 +11,6 @@ import { createApp } from 'vue';
  * registering components with the application instance so they are ready
  * to use in your application's views. An example is included for you.
  */
-
 import App from './AppLayouts.vue'
 import router from './router'
 import store from './store'

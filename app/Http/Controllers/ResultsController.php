@@ -12,7 +12,21 @@ class ResultsController extends Controller
   public function index() {
     // $data = Results::all();
     // return response()->json($data);
-    return ResultsResource::collection(Results::paginate(10));
+    // return ResultsResource::collection(Results::paginate(500)); # Работает
+    return ResultsResource::collection(Results::with()->paginate(5));
+
+    // $country  = Country::find(1);
+    // $user =    $country->user;
+    // $name = $user->name; //Vova
+
+    // return Results::where('id', 2);
+    // return ResultsResource::collection(Results::where('id', 2)->paginate(500));
+    // return ResultsResource::collection(Results::with('speciality_id')->paginate(500));
+    // return ResultsResource::collection(Results::where('subject', Сочинение)->get());
+    // "subject": "Сочинение",
+    // return ResultsResource::collection(Results::where('name', 3)->get());
+    // return ResultsResource::collection(Results::all());
+    // return ResultsResource::collection(Results::get());
   }
 
   public function store(Request $req) {

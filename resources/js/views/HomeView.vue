@@ -1,4 +1,6 @@
 <template>
+  {{ $store.state }}
+
   <div class="container">
     <vSidebar/>
     <main class="main" :class="{'active': $store.state.menuVisible == true}">
@@ -7,15 +9,10 @@
       <vUserTable/>
     </main>
   </div>
-    <!-- <vHeader/> -->
-    <!-- <main class="main"> -->
-      <!-- <router-view/> -->
-    <!-- </main> -->
-    <!-- <vFooter/> --> 
-  <!-- </div> -->
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
   // import vHeader from '@/components/Header.vue' // Header
   import vSidebar from '@/components/Sidebar.vue' // Aside
   import vTopBar from '@/components/TopBar.vue' // 
@@ -24,7 +21,19 @@
   // import vFooter from '@/components/Footer.vue' // Footer
   export default {
     // components: {vHeader, vSidebar, vFooter}
-    components: {vSidebar, vTopBar, vCardList, vUserTable,}
+    components: {vSidebar, vTopBar, vCardList, vUserTable,},
+    mounted() {
+      // Запуск функции из VUEX для получения специальностей
+      this.GET_SPEC_API()
+      // Запуск функции из VUEX для получения специальностей
+    },
+    methods: {
+      // Получение функций из VUEX
+      ...mapActions([
+          'GET_SPEC_API'
+      ]),      
+      // Получение функций из VUEX
+    }
   }
 </script>
 

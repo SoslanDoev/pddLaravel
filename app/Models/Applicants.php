@@ -21,6 +21,6 @@ class Applicants extends Model
     }
 
     public function result() {
-      return $this->hasOne(Results::class, 'id');
+      return $this->hasMany(Results::class, 'id');
     }
 }

@@ -12,7 +12,8 @@ class SpecialtiesController extends Controller
   public function index() {
     // $data = Specialties::all();
     // return response()->json($data);
-    return SpecialtiesResource::collection(Specialties::paginate(10));
+    // return SpecialtiesResource::collection(Specialties::paginate(50));
+    return SpecialtiesResource::collection(Specialties::all());
   }
 
   public function store(Request $req) {

@@ -16,11 +16,17 @@ class ApplicantsResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-          'id' => $this->id,
+          // 'data' => $this->collection,
           'name' => $this->name,
           'surname' => $this->surname,
           'patronymic' => $this->patronymic,
-          'speciality_id' => $this->speciality->name,
+          'speciality' => $this->speciality->name,
         ];
+    }
+
+    public function __construct($resource)
+    {
+      parent::__construct($resource);
+      $this->collection = $resource; 
     }
 }

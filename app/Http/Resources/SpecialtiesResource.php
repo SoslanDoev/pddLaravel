@@ -18,6 +18,7 @@ class SpecialtiesResource extends JsonResource
       return [
         'id' => $this->id,
         'name' => $this->name,
+        // 'test' => $this->enrollee->result,
       ];
     }
 }

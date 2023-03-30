@@ -15,7 +15,10 @@ class Specialties extends Model
       'name', 'updated_at', 'created_at',
     ];
 
-    public function enrollee() { 
-      return $this->belongsTo(Applicants::class, 'speciality_id', 'id');
+    // public function enrollee() { 
+    //   return $this->belongsTo(Applicants::class, 'speciality_id', 'id');
+    // }
+    public function enrollee() {
+      return $this->hasOne(Applicants::class, 'id');
     }
 }
