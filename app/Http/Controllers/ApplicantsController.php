@@ -10,11 +10,16 @@ use App\Http\Resources\ApplicantsResource;
 class ApplicantsController extends Controller
 {
   public function index($spec = 1) {
+    /*
+      Функция получения applicants 
+      Входные параметры: 
+        $spec - натуральное число
+      Выход: Получение данных
+    */
     // $data = Applicants::all();
     // return response()->json($data);
     // return ApplicantsResource::collection(Applicants::all());
     // return ApplicantsResource::collection(Applicants::paginate(500));
-
     $data = Applicants::where('speciality_id', $spec)->paginate(10);
     // return response()->json($data);
     return ApplicantsResource::collection($data);

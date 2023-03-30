@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { createStore } from 'vuex'
-import spec from './Spec/index'
+import spec from './spec/index'
+import applicants from './applicants/index'
 
 export default createStore({
   state: {
@@ -44,6 +45,6 @@ export default createStore({
     // Пользователи 
   },
   modules: {
-    spec
+    spec, applicants
   }
 })

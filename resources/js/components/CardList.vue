@@ -58,6 +58,7 @@
     position: relative;
     width: 100%;
     gap: 30px;
+    margin: 0 0 20px;
     //margin: 0 0 30px 0;
   }
   .bg-black .card {

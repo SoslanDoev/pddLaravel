@@ -19,7 +19,7 @@
     </a>
   </div>
   <Transition name="fade" mode="out-in">
-    <div class="table__null" v-if="pagination.length <= 0">
+    <div class="table__null" v-if="table.length <= 0">
       <h1 class="table__title">Таблица пуста</h1>
     </div>
     <div class="table__items" v-else> 
@@ -30,21 +30,27 @@
             <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a>
             <a href="#" class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</a>
           </div>
+          <p class="table__pages-text">{{ table[0].speciality }}</p>
         </div>
         <table class="table__inner" cellspacing='0'>
           <thead class="table__thead">
             <tr class="table__tr">
               <th class="table__th">Id</th>
-              <th class="table__th">Пользователь</th>
+              <th class="table__th">Абитуриент</th>
+              <th class="table__th">Предметы</th>
               <th class="table__th">Общие баллы</th>
             </tr>
           </thead>
           <tbody>
             <TransitionGroup name="fade__group">
-              <tr class="table__tr" v-for="item in pagination" :key="item.id">
+              <!-- <tr class="table__tr" v-for="item in pagination" :key="item.id"> -->
+              <tr class="table__tr" v-for="item in table" :key="item.id">
                 <td class="table__td">{{ item.id }}</td>
-                <td class="table__td">{{ item.name}} {{ item.patronymic }}</td>
-                <td class="table__td">{{ item.score }}</td>
+                <td class="table__td">{{ item.name}} {{ item.surname }} {{ item.patronymic }}</td>
+                <td class="table__td">
+                  <p v-for="elem in item.results">{{ elem.subject }} : {{ elem.grade }}</p>
+                </td>
+                <td class="table__td">{{item.results[0].grade + item.results[1].grade + item.results[2].grade}}</td>
               </tr>
             </TransitionGroup>
           </tbody>
@@ -66,8 +72,15 @@
 <script>
   export default {
     name: 'UserTable',
+    props: {
+      table: {
+        type: Array, 
+        default: {}
+      }
+    },
     data() {
       return {
+        applicants: this.$store.state.applicants,
         countUser: 1,
         page: 1,
         pageTo: 1,

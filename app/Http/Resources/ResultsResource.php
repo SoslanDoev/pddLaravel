@@ -17,12 +17,12 @@ class ResultsResource extends JsonResource
         // return parent::toArray($request);
         return [
           'id' => $this->id,
-          'name' => $this->enrollee->name,
-          'surname' => $this->enrollee->surname,
-          'patronymic' => $this->enrollee->patronymic,
-          'speciality_id' => $this->enrollee->speciality->id,
+          // 'name' => $this->enrollee->name,
+          // 'surname' => $this->enrollee->surname,
+          // 'patronymic' => $this->enrollee->patronymic,
+          // 'speciality_id' => $this->enrollee->speciality->id,
           // 'test' => $this->enrollee::where('id', 5)->first(),
-          'speciality' => $this->enrollee->speciality->name,
+          // 'speciality' => $this->enrollee->speciality->name,
           'subject' => $this->discipline->name,
           'grade' => $this->grade,
         ];
