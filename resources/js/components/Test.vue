@@ -88,7 +88,7 @@
 <style lang="scss">
   @import '../../sass/_variables.scss';
   .test__main {
-    max-height: 100vh;
+    max-height: 600px;
     overflow-y: auto;
   }
   .test__inner {

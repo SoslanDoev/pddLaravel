@@ -39,9 +39,10 @@ Route::delete('/disciplines/{id}', [DisciplinesController::class, 'destroy'])->n
 // Дисциплина
 
 // Абитуриент
-Route::get('/applicants/{spec}', [ApplicantsController::class, 'index'])->name('get-applicants');
+Route::get('/applicants/{spec}count={count}', [ApplicantsController::class, 'index'])->name('get-applicants');
+// Route::get('/applicants/{spec}', [ApplicantsController::class, 'index'])->name('get-applicants');
 Route::post('/applicants', [ApplicantsController::class, 'store'])->name('post-applicants');
-Route::get('/applicants/{id}', [ApplicantsController::class, 'show'])->name('show-applicants');
+Route::get('/applicants-show/{id}', [ApplicantsController::class, 'show'])->name('show-applicants');
 Route::patch('/applicants/{id}', [ApplicantsController::class, 'update'])->name('update-applicants');
 Route::delete('/applicants/{id}', [ApplicantsController::class, 'destroy'])->name('destroy-applicants');
 // Абитуриент

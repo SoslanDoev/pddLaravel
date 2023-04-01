@@ -7,5 +7,7 @@ export default {
       Выход: Ничего (Изменение названия)
     */
     state.pages = payload
+    this.commit('DEL_DATA_APPLICANTS') // Сброс массива абитуринтов до default
+    this.commit('DEL_PAGE_APPLICANTS') // Сброс страницы абитуриентов до default 
   },
 }
