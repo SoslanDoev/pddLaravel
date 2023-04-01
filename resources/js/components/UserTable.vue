@@ -1,7 +1,4 @@
 <template>
-  <Transition name="fade" mode="out-in">
-    <p class="table__title">{{ $store.state.spec.spec[$store.state.page.pages].name }}</p> 
-  </Transition>
   <div class="table__create-box">
     <a href="#" class="table__create" @click.prevent="createTable()">
       <!-- <img src="@/assets/images/plus.svg" class="table__create-image" alt="image"> -->
@@ -32,11 +29,11 @@
             <p class="table__pages-text">Страница: {{ page }}</p>
             <p class="table__pages-text">Из: {{ total }}</p>
           <!-- </div> -->
-          <div class="pagination__table">
-            <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a>
-            <a href="#" class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</a>
-          </div>
-          <p class="table__pages-text">{{ table[0].speciality }}</p>
+          <!-- <div class="pagination__table"> -->
+            <!-- <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a> -->
+            <!-- <a href="#" class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</a> -->
+          <!-- </div> -->
+          <p class="table__pages-text">{{ $store.state.spec.spec[$store.state.page.pages].name }}</p>
         </div>
         <table class="table__inner" cellspacing='0'>
           <thead class="table__thead">
