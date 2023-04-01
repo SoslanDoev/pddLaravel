@@ -28,7 +28,10 @@
     <div class="table__items" v-else> 
       <div class="table">
         <div class="table__pages">
-          <p class="table__pages-text">Страница: {{ page }}</p>
+          <!-- <div class="table__pages-count__box" v-if="$store.state.applicants.data.length && total"> -->
+            <p class="table__pages-text">Страница: {{ page }}</p>
+            <p class="table__pages-text">Из: {{ total }}</p>
+          <!-- </div> -->
           <div class="pagination__table">
             <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a>
             <a href="#" class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</a>
@@ -47,7 +50,7 @@
           <tbody>
             <TransitionGroup name="fade__group">
               <!-- <tr class="table__tr" v-for="item in pagination" :key="item.id"> -->
-              <tr class="table__tr" v-for="item in table" :key="item.id">
+              <tr class="table__tr" v-for="item in pagination" :key="item.id">
                 <td class="table__td">{{ item.id }}</td>
                 <td class="table__td">{{ item.name}} {{ item.surname }} {{ item.patronymic }}</td>
                 <td class="table__td">
@@ -62,12 +65,12 @@
       <!-- <div class="table__images">
         <img src="@/assets/images/bubble2.gif" class="table__image" alt="Сортировка пузырьком">
       </div> -->
-    <!-- <div class="pagination">
+    <div class="pagination">
       <div class="pagination__inner">
         <button class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</button>
-        <button class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</button>
+        <button class="pagination__btn" v-if="page < ($store.state.applicants.data.length / 10)" @click.prevent="page++">next</button>
       </div>
-    </div> -->
+    </div>
   </div>
 </Transition>
 </template>
@@ -84,27 +87,28 @@
     },
     data() {
       return {
-        applicants: this.$store.state.applicants,
-        countUser: 1,
-        page: 1,
-        pageTo: 1,
-        pageFrom: 1,
-        limit: 10,
-        total: 0,
-        pages: [],
-        list: []
-      }
-    },
-    mounted() {
-      let
-        list = this.list,
-        limit = this.limit,
-        totalPages = Math.ceil(list.length / limit)
-      for (let i = 1; i < totalPages; i++) {
-        this.pages.push(i)
+        page: 1, // Текущая страница 
+        limit: 10, // Предел страниц
+        total: 0, // Кол-во страниц
+        pages: [], // Массив страниц
       }
     },
     methods: {
+      startPagination() {
+        /*
+          Функция считает кол-во страниц 
+          Входные параметры: 
+            Ничего
+          Выход: Ничего (Изменение переменной)
+        */
+        let 
+          list = this.$store.state.applicants.data // Массив абитуриентов 
+        this.total = Math.ceil(list.length / this.limit)
+        for (let i = 0; i < this.total; i++) {
+          this.pages.push(i)
+        }
+        console.log(this.pages)
+      },
       // Получение функции из VUEX
       ...mapActions([
         'GET_APPLICANTS_API'
@@ -128,24 +132,33 @@
           Возвращает: Ничего
         */
         this.GET_APPLICANTS_API({count: n, specID: specID, page: this.page}) 
+        this.startPagination()
       },
       paginationCalc(array) {
+        /*
+          Функция вычисляет пагинацию и выводит массив от from до to 
+          Входные параметры
+            array - Массив для пагинации
+          Выход: Массив с элементами от from до to 
+        */
         let 
           page = this.page,
           limit = this.limit,
           from = (page * limit) - limit,
           to = (page * limit)
-        this.pageTo = to
         return array.slice(from, to) 
       }
     },
     computed: {
-      // Вычисление пагинации
       pagination() {
-        this.$store.commit('SET_PAGINATION_COUNT', this.$store.state.users.length)
-        return this.paginationCalc(this.$store.state.users)
+        /*
+          Функция вычисляет пагинацию
+          Входные параметры: 
+            Ничего 
+          Выход: Пагинация
+        */
+        return this.paginationCalc(this.$store.state.applicants.data)
       }
-      // Вычисление пагинации
     },
   }
 </script>

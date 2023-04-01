@@ -68,8 +68,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    inset: 0;
     &-title {
       text-align: center;
     }
