@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { createStore } from 'vuex'
-import spec from './spec/index'
-import applicants from './applicants/index'
+import spec from './spec/index' // Специальности
+import applicants from './applicants/index' // Абитуриенты 
+import page from './pages/index' // Страницы 
 
 export default createStore({
   state: {
@@ -45,6 +46,8 @@ export default createStore({
     // Пользователи 
   },
   modules: {
-    spec, applicants
+    spec, // Специальности
+    applicants, // Абитуриенты
+    page, // Страницы стилей  
   }
 })

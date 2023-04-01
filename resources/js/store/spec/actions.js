@@ -1,10 +1,13 @@
 import axios from 'axios'
 
 export default {
-  GET_SPEC_API({commit}) {
+  GET_SPEC_API({state, commit}) {
     /*
       Функция получения специальностей с сервера
     */
+    if (state.spec.length > 0) {
+      return
+    }
     return axios('http://127.0.0.1:8000/api/specialties/', {
       method: 'GET'
     })

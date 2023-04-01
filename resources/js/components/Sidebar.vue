@@ -9,7 +9,7 @@
 
     <ul id="navigation__list" class="navigation__list">
       <li class="navigation__item" v-for="item in specList" :key="item.id" :class="{'navigation__menu--active': active == item.id}">
-        <a href="#" @click.prevent="active = item.id, abit(item.id)" class="navigation__link">{{ item.name }}</a>
+        <a href="#" @click.prevent="active = item.id, pagesMutations(item.pageId)" class="navigation__link">{{ item.name }}</a>
       </li>
     </ul>
 
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   import {mapActions} from 'vuex'
   import ExampleGifs from '@/components/ExampleGifs.vue'
   import vsort from '@/sort'
@@ -43,62 +44,28 @@
       return {
         active: null,
         specList: this.$store.state.spec.spec,
-        exampleGifsActive: false,
-        exampleImage: '',
-        navigationList: [
-          new vnavigation.Navigation('Встроенный(T)', 'bubble2.gif',[ // Работает
-            new vnavigation.NavigationMenu('id', 'Id', vsort.sortBuiltIn),
-            new vnavigation.NavigationMenu('name', 'Имя', vsort.sortBuiltIn),
-            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.sortBuiltIn),
-            new vnavigation.NavigationMenu('score', 'Баллы', vsort.sortBuiltIn),
-          ]),
-          new vnavigation.Navigation('Пузырек(T)', 'bubble2.gif', [ // Работает
-            new vnavigation.NavigationMenu('id', 'Id', vsort.bubbleSort),
-            new vnavigation.NavigationMenu('name', 'Имя', vsort.bubbleSort),
-            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bubbleSort),
-            new vnavigation.NavigationMenu('score', 'Баллы', vsort.bubbleSort),
-          ]),
-          new vnavigation.Navigation('Выбором(T)', 'bubble2.gif', [ // Работает
-            new vnavigation.NavigationMenu('id', 'Id', vsort.selectionSort),
-            new vnavigation.NavigationMenu('name', 'Имя', vsort.selectionSort),
-            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.selectionSort),
-            new vnavigation.NavigationMenu('score', 'Баллы', vsort.selectionSort),
-          ]),
-          // Алгоритм сортировки Хоара (Быстрая сортировка)
-          
-          // Алгоритм сортировки Шэлла 
-          // Алгоритм сортировки подсчетом 
-          // Алгоритм сортировки гнома 
-          // Алгоритм пирамидальной сортировки 
-          // Алгоритм быстрой сортировки 
-          // Алгоритм сортировки перемешиванием
-          // Алгоритм блочной сортировки 
-          // Алгоритм плавной сортировки
-          // Алгоритм интроспективной сортировки 
-          // Алгоритм придурковатая сортировка 
-          // Алгоритм гравитационной сортировки 
-          // Алгоритм поразрядной сортировки 
-          new vnavigation.Navigation('Шейкерная(F)', 'bubble2.gif', [ // Не работает
-            new vnavigation.NavigationMenu('id', 'Id', vsort.cocktailSort),
-            new vnavigation.NavigationMenu('name', 'Имя', vsort.cocktailSort),
-            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.cocktailSort),
-            new vnavigation.NavigationMenu('score', 'Баллы', vsort.cocktailSort),
-          ]),
-          new vnavigation.Navigation('Слиянием(F)', 'bubble2.gif', [ // Не работает
-            new vnavigation.NavigationMenu('id', 'Id', vsort.mergeSort),
-            new vnavigation.NavigationMenu('name', 'Имя', vsort.mergeSort),
-            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.mergeSort),
-            new vnavigation.NavigationMenu('score', 'Баллы', vsort.mergeSort),
-          ]),
-        ]
       }
     },
     methods: {
+      // Измение функий Vuex
+      ...mapMutations([
+        'SET_PAGES_SPEC', // Изменеие названия страниц 
+      ]),
+      // Измение функий Vuex
       // Получение функции из VUEX
       ...mapActions([
-        'GET_APPLICANTS_API'
+        'GET_APPLICANTS_API',
       ]),      
       // Получение функции из VUEX
+      pagesMutations(name) {
+        /*
+          Функция отправляет строку для изменения переменной во VUEX
+          Входные параметры: 
+            name - Строка 
+          Выход: Ничего (Изменение переменной во VUEX)
+        */
+        this.SET_PAGES_SPEC(name)
+      },
       abit(n) {
         console.log(n)
         /*
@@ -108,6 +75,9 @@
           Выход: Ничего (Отправление запроса на сервер) 
         */
         this.GET_APPLICANTS_API(n)
+        setTimeout(() => {
+          this.active = null
+        }, 200)
       },
       activeLink(item) {
         item.active = true
@@ -123,15 +93,6 @@
 
 <style lang="scss">
 @import '../../sass/_variables.scss';
-.fade-enter-active,
-.fade-leave-active {
-  transition: $transition-default;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(-25px);
-}
 .bg-black .toggle {
   background-color: $clr-main2;
   transition: $transition-default;

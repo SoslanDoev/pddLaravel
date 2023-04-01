@@ -3,8 +3,14 @@
     <vSidebar/>
     <main class="main" :class="{'active': $store.state.menuVisible == true}">
       <vTopBar/>
+      <!-- <div v-if="$store.state.page.pages == 1">adadad</div> -->
       <vCardList/>
-      <vTest/>
+      <Transition name="fade" mode="out-in">
+        <vTest v-if="Number.isInteger($store.state.page.pages)"/>
+        <div v-else class="vTest__undefined">
+          <h3 class="vTest__undefined-title title">Выберите специальность</h3>
+        </div>
+      </Transition>
       <!-- <vUserTable/> -->
     </main>
   </div>
@@ -56,6 +62,16 @@
     &.active {
       width: calc(100% - $aside-padding);
       left: $aside-padding;
+    }
+  }
+  .vTest__undefined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    &-title {
+      text-align: center;
     }
   }
   @media screen and (max-width: 1220px) {

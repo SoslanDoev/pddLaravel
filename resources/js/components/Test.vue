@@ -88,7 +88,7 @@
 <style lang="scss">
   @import '../../sass/_variables.scss';
   .test__main {
-    min-height: 100vh;
+    max-height: 100vh;
     overflow-y: auto;
   }
   .test__inner {
@@ -120,7 +120,6 @@
     top: 0;
     bottom: 0;
     height: 100%;
-    background-color: red;
   }
 
 .fade-enter-active,

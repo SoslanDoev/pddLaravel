@@ -1,7 +1,8 @@
 <template>
   <div class="topbar">
-    <div class="search">
-      <input type="text" class="search__input" placeholder="Поиск...">
+    <div class="topbar__inner">
+      <!-- <input type="text" class="search__input" placeholder="Поиск..."> -->
+      <h3 class="topbar__title">Учет абитуриентов</h3>
       <a href="#" class="topbar__theme" @click.prevent="moonTheme">
         <!-- <img src="@/assets/images/moon.svg" class="topbar__theme-image" alt="moon"> -->
         <svg height="800px" class="topbar__theme-image" viewBox="0 0 24 24" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="browsers"><g><rect fill="none" height="14" rx="2" ry="2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="14" x="3" y="7"/><path d="M8,3H19a2,2,0,0,1,2,2V16" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></g></g></g></svg>
@@ -36,12 +37,15 @@
     align-items: center;
     padding: 0 10px;
     margin: 0 0 10px;
-  }
-  .search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    &__title {
+      margin: 0 auto;
+    }
   }
   .topbar__theme {
     margin: 0 0 0 50px;

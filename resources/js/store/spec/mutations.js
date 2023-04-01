@@ -6,6 +6,10 @@ export default {
         payload - Данные с сервера
       Выход: Ничего (Добавление данных в массив)
     */
-    payload.forEach((e) => {state.spec.push(e)})
+   let item = 0
+    payload.forEach((e) => {
+      state.spec.push({id: e.id, name: e.name, pageId: item})
+      item++
+    })
   }, // Добавление специальностей
 }
