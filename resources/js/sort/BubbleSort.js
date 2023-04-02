@@ -12,11 +12,11 @@ export const bubbleSort = (arr, keyName = 'id') => { // Работает
   for (let i = 0, endI = arr.length - 1; i < endI; i++) {
     let wasSwap = false
     for (let j = 0, endJ = endI - i; j < endJ; j++) {
-      if (arr[j][keyName] < arr[j + 1][keyName] && keyName == 'score') {
+      if (arr[j].score < arr[j + 1].score && keyName == 'score') {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
         wasSwap = true
       }
-      else if (arr[j][keyName] > arr[j + 1][keyName]) {
+      else if (arr[j].data[keyName] > arr[j + 1].data[keyName]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
         wasSwap = true
       }

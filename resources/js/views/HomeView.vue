@@ -46,7 +46,7 @@
   @import '../../sass/_variables.scss';
   .bg-black .main {
     background-color: $dark-primary-color;
-    color: $dark-primary-color;
+    color: $dark-text-color;
     transition: $transition-default;
   }
   .main {

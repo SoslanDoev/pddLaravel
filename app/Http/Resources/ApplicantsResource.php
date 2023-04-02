@@ -34,7 +34,7 @@ class ApplicantsResource extends JsonResource
             // 'grade' => 
           // ],
           // 'test' => Results::where('enrollee_id', $this->id)->get(),
-          'test' => Results::where('enrollee_id', $this->id)->get(),
+          // 'test' => Results::where('enrollee_id', $this->id)->get(),
         ];
     }
 

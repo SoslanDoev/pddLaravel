@@ -7,9 +7,11 @@ export default {
       Выход: Ничего (Добавление данных в массив)
     */
     payload.forEach((e) => {
-      state.data.push(e)
+      let res = 0
+      e.results.forEach((n) => { res += n.grade })
+      state.data.push({data: e, score: res})
     })
-    console.log(state.data.length)
+    console.log(state.data)
   },
   SET_PAGE_APPLICANTS(state) {
     /*

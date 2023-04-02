@@ -39,35 +39,35 @@
         exampleGifsActive: false,
         exampleImage: '',
         navigationList: [
-          new vnavigation.Navigation('Встроенный(T)', 'bubble2.gif',[ // Работает
+          new vnavigation.Navigation('Встроенный', 'bubble2.gif',[ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.sortBuiltIn),
           ]),
-          new vnavigation.Navigation('Пузырек(T)', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Пузырек', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bubbleSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bubbleSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bubbleSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bubbleSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.bubbleSort),
           ]),
-          new vnavigation.Navigation('Выбором(T)', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Выбором', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.selectionSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.selectionSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.selectionSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.selectionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.selectionSort),
           ]),
-          new vnavigation.Navigation('Шейкерная(F)', 'bubble2.gif', [ // Не работает
+          new vnavigation.Navigation('Шейкерная', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.cocktailSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.cocktailSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.cocktailSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.cocktailSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.cocktailSort),
           ]),
-          new vnavigation.Navigation('Слиянием(F)', 'bubble2.gif', [ // Не работает
+          new vnavigation.Navigation('Слиянием(F)', 'bubble2.gif', [ // не Не работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.mergeSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.mergeSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.mergeSort),

@@ -1,60 +1,46 @@
-function swap(arr, i, j) {
-  var swap = arr[i];    arr[i] = arr[j];
-  arr[j] = swap;
-}
 export const cocktailSort = (arr, keyName = 'id') => {
-  var left = 0;
-  let firstSwap = 0
-  var right  = arr.length - 1;
-  let lastSwap = arr.length - 1
-  while (left < right) {
-    for (var i = left; i < right; i++) {
-          if (arr[i][keyName] > arr[i + 1][keyName]) {
-              swap(arr, i, i + 1);
-              lastSwap = i;
-          }
+  /*
+    Наименование: Шейкерная сортировка
+    Функция сортирует элементы массива 
+    Входные параметры: 
+      arr - Одномерный массив,
+      keyName - Метод сортировки по названию
+    Выход: Остортированный массив
+  */
+  let
+    left = 0,
+    right = arr.length - 1,
+    swapped
+  do {
+    swapped = false;
+    for (let i = left; i < right; i++) {
+      if (keyName == 'score') {
+        if (arr[i].score < arr[i+1].score) {
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          swapped = true;
+        }
+      } 
+      else if (arr[i].data[keyName] > arr[i + 1].data[keyName]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        swapped = true;
       }
-      right = lastSwap;
-      for (var j = right; j > left; j--) {
-          if (arr[j][keyName] < arr[j - 1][keyName]) {
-              swap(arr, j, j - 1);
-              firstSwap = j;
-          }
+    }
+    if (!swapped) break;
+    swapped = false;
+    right--;
+    for (let i = right; i > left; i--) {
+      if (keyName == 'score') {
+        if (arr[i].score > arr[i-1].score) {
+          [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+          swapped = true;
+        }
       }
-      left = firstSwap;
-  }
+      else if (arr[i].data[keyName] < arr[i - 1].data[keyName]) {
+        [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+        swapped = true;
+      }
+    }
+    left++;
+  } while (swapped);
   return arr;
 }
-// export const cocktailSort = (arr, keyName = 'id') => { // Не работает
-//   /*
-//     Наименование: Шейкерная сортировка
-//     Функция сортирует элементы массива 
-//     Входные параметры: 
-//       arr - одномерный массив,
-//       keyName - Метод сортировки по названию 
-//     Выход: отсортированный массив
-//   */
-//   const start= new Date().getTime()
-//   let left = 0, firstSwap = 0
-//   let right = arr.length - 1, lastSwap = arr.length - 1
-//   while (left < right) {
-//     for (let i = left; i < right; i++) {
-//       if (arr[i][keyName] > arr[i + 1][keyName]) {
-//         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]]
-//         lastSwap = i
-//       }
-//     }
-//     right = lastSwap
-//     for (let i = right; i > left; i--) {
-//       if (arr[i][keyName] < arr[i - 1][keyName]) {
-//         [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]]
-//         firstSwap = i
-//       }
-//     }
-//     left = firstSwap
-//   }
-//   const end = new Date().getTime()
-//   localStorage.setItem('speed', `${end-start}ms`)
-//   localStorage.setItem('complexity', `O(n^2)`)
-//   return arr
-// }
