@@ -1,5 +1,6 @@
 <template>
   <div class="table__create-box">
+    <p class="table__create-text">Добавить: </p>
     <a href="#" class="table__create" @click.prevent="createTable()">
       <!-- <img src="@/assets/images/plus.svg" class="table__create-image" alt="image"> -->
       <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-add"><g><path class="table__create-image-path" d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" class="table__create-image-path" fill="none" r="4" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line fill="none" class="table__create-image-path" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17" x2="23" y1="11" y2="11"/><line fill="none" stroke="#44475a" stroke-linecap="round" class="table__create-image-path" stroke-linejoin="round" stroke-width="2" x1="20" x2="20" y1="8" y2="14"/></g></g></g></svg>
@@ -28,6 +29,7 @@
           <!-- <div class="table__pages-count__box" v-if="$store.state.applicants.data.length && total"> -->
             <p class="table__pages-text">Страница: {{ page }}</p>
             <p class="table__pages-text">Из: {{ total }}</p>
+            <p class="table__pages-text">Всего: {{ $store.state.applicants.data.length }}</p>
           <!-- </div> -->
           <!-- <div class="pagination__table"> -->
             <!-- <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a> -->
@@ -73,6 +75,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   import {mapActions} from 'vuex'
   export default {
     name: 'UserTable',
@@ -91,6 +94,16 @@
       }
     },
     methods: {
+      // Получение функции из VUEX
+      ...mapMutations([
+        'DEL_DATA_APPLICANTS'        
+      ]),
+      // Получение функции из VUEX
+      // Получение функции из VUEX
+      ...mapActions([
+        'GET_APPLICANTS_API'
+      ]),
+      // Получение функции из VUEX
       startPagination() {
         /*
           Функция считает кол-во страниц 
@@ -106,19 +119,15 @@
         }
         console.log(this.pages)
       },
-      // Получение функции из VUEX
-      ...mapActions([
-        'GET_APPLICANTS_API'
-      ]),
-      // Получение функции из VUEX
       deleteTable() {
         /*
           Функция удаляет таблицу
           Входные параметры: нет
           Выход: нет
         */
-        this.$store.commit('DELETE_USERS')
+        this.DEL_DATA_APPLICANTS()
         this.countUser = 1
+        this.page = 1
       },
       createTable(n = 100, specID = this.$store.state.spec.spec[this.$store.state.page.pages].id) {
         /*

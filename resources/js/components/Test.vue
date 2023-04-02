@@ -42,30 +42,35 @@
           new vnavigation.Navigation('Встроенный(T)', 'bubble2.gif',[ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.sortBuiltIn),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.sortBuiltIn),
           ]),
           new vnavigation.Navigation('Пузырек(T)', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bubbleSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bubbleSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bubbleSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bubbleSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.bubbleSort),
           ]),
           new vnavigation.Navigation('Выбором(T)', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.selectionSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.selectionSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.selectionSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.selectionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.selectionSort),
           ]),
           new vnavigation.Navigation('Шейкерная(F)', 'bubble2.gif', [ // Не работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.cocktailSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.cocktailSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.cocktailSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.cocktailSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.cocktailSort),
           ]),
           new vnavigation.Navigation('Слиянием(F)', 'bubble2.gif', [ // Не работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.mergeSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.mergeSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.mergeSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.mergeSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.mergeSort),
           ]),
@@ -77,7 +82,7 @@
         item.active = true
       },
       sortStart(element, name) {
-        this.$store.commit('UPDATE_USERS', element.func(this.$store.state.users, element.name))
+        this.$store.commit('UPDATE_USERS', element.func(this.$store.state.applicants.data, element.name))
         localStorage.setItem('methods', `${name}`)
         this.$store.commit('GET_LOCAL_STORAGE')
       }
@@ -87,50 +92,51 @@
 
 <style lang="scss">
   @import '../../sass/_variables.scss';
-  .test__main {
-    max-height: 600px;
-    overflow-y: auto;
+  .test {
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      width: 100%;
+      gap: 30px;
+      height: 100%;
+    }
+    &__content {
+      grid-column: span 3;
+      background-color: $clr-main;
+      padding: 10px;
+      border-radius: 20px;
+    }
+    &__info {
+      position: relative;
+      height: 100%;
+      background-color: $clr-main;
+      padding: 10px;
+      border-radius: 20px;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+      }
+    }
+    &__content, &__info { 
+      max-height: 600px;
+      overflow-y: auto;
+    }
   }
-  .test__inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    position: relative;
-    width: 100%;
-    gap: 30px;
-    height: 100%;
+  .fade {
+    &-enter-active, &-leave-active {
+      transition: $transition-default;
+    }
+    &-enter-from, &-leave-to {
+      opacity: 0;
+      transform: translateX(-25px);
+    }
   }
-  .test__content {
-    grid-column: span 3;
-    background-color: $clr-main;
-    padding: 10px;
-    border-radius: 20px;
-  }
-  .test__info {
-    position: relative;
-    height: 100%;
-    background-color: $clr-main;
-    padding: 10px;
-    border-radius: 20px;
-  }
-  .test__info::before {
-    content: "";
-    position: absolute;
-    width: 3px;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-  }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: $transition-default;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateX(-25px);
-}
 .bg-black .toggle {
   background-color: $clr-main2;
   transition: $transition-default;

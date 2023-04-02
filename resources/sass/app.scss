@@ -49,10 +49,11 @@
 }
 *::-webkit-scrollbar {
   width: 5px;
+  border-radius: 20px;
   background-color: $clr-white;
 }
 *::-webkit-scrollbar-thumb {
-  border-radius: 0;
+  border-radius: 20px;
   background-color: $clr-main;
 }
 *::-webkit-scrollbar-track {

@@ -3,8 +3,7 @@
     <vSidebar/>
     <main class="main" :class="{'active': $store.state.menuVisible == true}">
       <vTopBar/>
-      <!-- <div v-if="$store.state.page.pages == 1">adadad</div> -->
-      <vCardList/>
+      <vCardList/> <!--Карточки-->
       <Transition name="fade" mode="out-in">
         <vTest v-if="Number.isInteger($store.state.page.pages)"/>
         <div v-else class="vTest__undefined">

@@ -27,7 +27,8 @@ export default {
         Ничего
       Выход: Ничего (Сброс массив абитуринтов)
     */
-   state.data = []
+   state.data = [] // Сброс массива абитуриентов
+   state.page = 1 // Сброс страниц
   },
   DEL_PAGE_APPLICANTS(state) {
     /*

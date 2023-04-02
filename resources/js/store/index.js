@@ -37,9 +37,6 @@ export default createStore({
     SET_USERS(state, payload) {
       state.users.push(payload)
     },
-    DELETE_USERS(state) {
-      state.users = []
-    },
     UPDATE_USERS(state, payload) {
       state.users = payload
     }
