@@ -75,7 +75,7 @@
     justify-content: center;
     &-title {
       text-align: center;
-      color: $light-text-color;
+      color: $light-secondary-color;
       transition: $transition-default;
     }
   }
