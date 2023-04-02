@@ -4,6 +4,7 @@ import { cocktailSort } from "./CocktailSort"
 import { selectionSort } from "./SelectionSort"
 import { quickSort } from "./QuickSort"
 import { insertionSort } from './InsertSort' 
+import { heapSort } from './HeapSort'
 
 // Сортировка слиянием
 const merge = (arrFirst, arrSecond, keyName = 'score') => {
@@ -56,4 +57,5 @@ export default {
   selectionSort, // Сортировка выбором 
   quickSort, // Быстрая сортировка (Хоара)
   insertionSort, // Сортировка вставками
+  heapSort, // Сортировка кучей
 }

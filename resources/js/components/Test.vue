@@ -88,6 +88,13 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.insertionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.insertionSort),
           ]),
+          new vnavigation.Navigation('Вставками', 'bubble2.gif', [ // Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.heapSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.heapSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.heapSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.heapSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.heapSort),
+          ]),
         ],
       }
     },
