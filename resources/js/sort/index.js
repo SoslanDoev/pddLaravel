@@ -3,6 +3,7 @@ import { bubbleSort } from "./BubbleSort"
 import { cocktailSort } from "./CocktailSort"
 import { selectionSort } from "./SelectionSort"
 import { quickSort } from "./QuickSort"
+import { insertionSort } from './InsertSort' 
 
 // Сортировка слиянием
 const merge = (arrFirst, arrSecond, keyName = 'score') => {
@@ -54,4 +55,5 @@ export default {
   // sortBuckets, // Блочная сортировка
   selectionSort, // Сортировка выбором 
   quickSort, // Быстрая сортировка (Хоара)
+  insertionSort, // Сортировка вставками
 }
