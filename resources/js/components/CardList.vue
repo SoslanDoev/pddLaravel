@@ -62,23 +62,24 @@
     //margin: 0 0 30px 0;
   }
   .bg-black .card {
-    background-color: $clr-main;
+    background-color: $dark-secondary-color;
     transition: $transition-default;
-    color: $clr-white;
+    box-shadow: $dark-shadow-default;
+    color: $dark-text-color;
   }
   .card {
     position: relative;
     border-radius: 20px;
     padding: 30px;
-    background-color: $clr-white;
-    box-shadow: $shadow-default;
+    background-color: $light-primary-color;
+    box-shadow: $light-shadow-default;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     transition: $transition-default;
-    color: $clr-main;
+    color: $light-secondary-color;
     &__image {
       width: 35px;
       height: 35px;
@@ -90,12 +91,12 @@
       transition: $transition-default;
     }
     .bg-black &__number {
-      color: $clr-white;
+      color: $dark-text-color;
       transition: $transition-default;
     }
     &__number {
       margin: 0 0 10px;
-      color: $clr-main;
+      color: $light-secondary-color;
       transition: $transition-default;
       font-size: 2rem;
     }

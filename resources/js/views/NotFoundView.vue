@@ -24,14 +24,14 @@
     }
     .bg-black &__link {
       &:hover {
-        color: $clr-white;
+        color: $dark-primary-color;
       }
     }
     &__link {
       font-size: 1.25rem;
       transition: $transition-default;
       &:hover {
-        color: $clr-main2;
+        color: $light-secondary-color;
         transition: $transition-default;
       }
     }

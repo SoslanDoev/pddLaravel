@@ -16,6 +16,11 @@
     name: 'TopBar',
     methods: {
       moonTheme() {
+        /*
+          Функция меняет тему
+          Входные параметры: Ничего 
+          Выход: Ничего (Изменение глобальной переменной)
+        */
         document.body.classList.toggle('bg-black')
         if (document.body.classList.contains('bg-black')) {
           localStorage.setItem('bg', true)
@@ -29,6 +34,10 @@
 
 <style scoped lang="scss">
   @import '../../sass/_variables.scss';
+  .bg-black .topbar {
+    color: $dark-text-color;
+    transition: $transition-default;
+  }
   .topbar {
     width: 100%;
     min-height: 60px;
@@ -37,6 +46,8 @@
     align-items: center;
     padding: 0 10px;
     margin: 0 0 10px;
+    transition: $transition-default;
+    color: $light-secondary-color;
     &__inner {
       display: flex;
       align-items: center;
@@ -50,22 +61,22 @@
   .topbar__theme {
     margin: 0 0 0 50px;
     border-radius: 4px;
-    // background-color: $clr-white;
+    // background-color: $primary-color;
     padding: 5px;
     & rect {
       transition: $transition-default;
-      fill: $clr-main;
+      fill: $light-primary-color;
     }
     & path {
       transition: $transition-default;
-      fill: $clr-white;
+      fill: $light-primary-color;
     }
     .bg-black & rect {
       transition: $transition-default;
-      fill: $clr-white;
+      fill: $dark-primary-color;
     }
     .bg-black & path {
-      fill: $clr-main;
+      fill: $dark-secondary-color;
       transition: $transition-default;
     }
     &-image {
@@ -80,8 +91,11 @@
   }
   .bg-black .search__input {
     transition: $transition-default;
-    background-color: $clr-main;
-    color: $clr-white;
+    background-color: $dark-secondary-color;
+    color: $dark-primary-color;
+  }
+  .bg-black .search__input {
+    box-shadow: $dark-shadow-default;
   }
   .search__input {
     transition: $transition-default;
@@ -92,7 +106,7 @@
     padding: 5px 20px;
     outline: none;
     border: none;
-    box-shadow: $shadow-default;
+    box-shadow: $light-shadow-default;
   }
   .toggle {
     position: relative;

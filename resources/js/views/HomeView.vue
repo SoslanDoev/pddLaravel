@@ -45,8 +45,8 @@
 <style lang="scss">
   @import '../../sass/_variables.scss';
   .bg-black .main {
-    background-color: $clr-main2;
-    color: $clr-white;
+    background-color: $dark-primary-color;
+    color: $dark-primary-color;
     transition: $transition-default;
   }
   .main {
@@ -57,10 +57,16 @@
     min-height: 100vh;
     padding: 0 175px 0 calc(175px - $aside-padding);
     transition: $transition-default;
-    background-color: $clr-white;
+    background-color: $light-primary-color;
     &.active {
       width: calc(100% - $aside-padding);
       left: $aside-padding;
+    }
+  }
+  .bg-black .vTest__undefined {
+    &-title {
+      color: $dark-text-color;
+      transition: $transition-default;
     }
   }
   .vTest__undefined {
@@ -69,6 +75,8 @@
     justify-content: center;
     &-title {
       text-align: center;
+      color: $light-text-color;
+      transition: $transition-default;
     }
   }
   @media screen and (max-width: 1220px) {

@@ -92,6 +92,12 @@
 
 <style lang="scss">
   @import '../../sass/_variables.scss';
+  .bg-black {
+    .test {
+      &__content {background-color: $dark-secondary-color;}
+      &__info {background-color: $dark-secondary-color;}
+    }
+  }
   .test {
     &__inner {
       display: grid;
@@ -103,14 +109,14 @@
     }
     &__content {
       grid-column: span 3;
-      background-color: $clr-main;
+      background-color: $light-secondary-color;
       padding: 10px;
       border-radius: 20px;
     }
     &__info {
       position: relative;
       height: 100%;
-      background-color: $clr-main;
+      background-color: $light-secondary-color;
       padding: 10px;
       border-radius: 20px;
       &::before {
@@ -137,50 +143,22 @@
       transform: translateX(-25px);
     }
   }
-.bg-black .toggle {
-  background-color: $clr-main2;
-  transition: $transition-default;
-}
-.toggle {
-  display: flex;
-  justify-content: center;
-  transition: $transition-default;
-  position: relative;
-  width: 100%;
-  height: 30px;
-  object-fit: cover;
-  padding: 0 0 0 10px;
-  z-index: 50;
-  cursor: pointer;
-  background-color: $clr-white;
-  padding: 5px;
-  &-image {
-    width: 25px;
-    height: 25px;
-    object-fit: cover;
-    transition: $transition-default;
-    .bg-black & polyline{
-      stroke: $clr-white;
-      transition: $transition-default;
-    }
-  }
-}
   .bg-black .navigation {
-    background-color: $clr-main;
-    box-shadow: 5px 0 25px rgba($clr-main, 0.5);
-    color: $clr-white;
+    background-color: $dark-secondary-color;
+    box-shadow: 5px 0 25px rgba($dark-secondary-color, 0.5);
+    color: $dark-primary-color;
     transition: $transition-default;
   }
   .navigation {
     position: fixed;
     width: $aside-width;
     height: 100%;
-    background-color: $clr-grey;
-    //border-left: 10px solid $clr-main;
-    box-shadow: 5px 0 25px rgba($clr-grey, 0.5);
+    background-color: $light-secondary-color;
+    //border-left: 10px solid $light-secondary-color;
+    box-shadow: 5px 0 25px rgba($light-secondary-color, 0.5);
     transition: $transition-default;
     overflow: hidden;
-    color: $clr-main;
+    color: $light-secondary-color;
     overflow-y: auto;
     &.active {
       width: 55px;
@@ -200,7 +178,7 @@
       gap: 20px;
     }
     &__item {
-      color: $clr-white;
+      color: $light-primary-color;
       position: relative;
       width: 100%;
       border-top-left-radius: 30px;
@@ -208,7 +186,7 @@
       padding: 10px 0 10px 45px;
     }
     .bg-black &__item::before {
-      background-color: $clr-main2;
+      background-color: $dark-primary-color;
     }
     &__item::before {
       content: "";
@@ -218,17 +196,17 @@
       width: 35px;
       background-position: center center;
       height: 35px;
-      background-color: $clr-white;
+      background-color: $light-primary-color;
       border-radius: 50%;
       background-repeat: no-repeat;
       transition: $transition-default;
     }
     .bg-black &__menu--active::before {
-      background-color: $clr-white;
+      background-color: $dark-background-color;
       transition: $transition-default;
     } 
     &__menu--active::before {
-      background-color: $clr-main;
+      background-color: $light-background-color;
       transition: $transition-default;
     }
     &__item-list {
@@ -243,9 +221,9 @@
       transition: $transition-default;
       cursor: pointer;
       &:hover {
-        background-color: $clr-white;
+        background-color: $light-primary-color;
         transition: $transition-default;
-        color: $clr-main;
+        color: $light-secondary-color;
         border-top-left-radius: 30px;
         border-bottom-left-radius: 30px;
       }
@@ -281,12 +259,12 @@
     //}
     //&__item:hover &__link::before,
     //&__item.hovered &__link::before {
-    //  box-shadow: 35px 35px 0 10px $clr-white;
+    //  box-shadow: 35px 35px 0 10px $light-primary-color;
     //  top: -50px;  
     //}
     //&__item:hover &__link::after,
     //&__item.hovered &__link::after {
-    //  box-shadow: 35px -35px 0 10px $clr-white;
+    //  box-shadow: 35px -35px 0 10px $light-primary-color;
     //  bottom: -50px;
     //}
   }

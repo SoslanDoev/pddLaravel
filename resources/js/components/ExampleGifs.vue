@@ -42,7 +42,7 @@
     width: 100%;
     z-index: 1000;
     height: 100%;
-    background-color: $clr-white;
+    background-color: $light-primary-color;
   }
   .examplegifs__image {
     width: 90%;
@@ -52,7 +52,7 @@
     border-radius: 20px;
   }
   .bg-black .examplegifs__inner {
-    background-color: $clr-main;
+    background-color: $dark-secondary-color;
   }
   .examplegifs-trans-leave-active,
   .examplegifs-trans-enter-active {

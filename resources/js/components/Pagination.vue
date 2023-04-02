@@ -80,7 +80,7 @@
         min-width: 25px;
         background: transparent;
         transition: 200ms linear;
-        color: $clr-white;
+        color: $light-primary-color;
     }
     .pagination__item:hover {
         color: var(--clr-main);

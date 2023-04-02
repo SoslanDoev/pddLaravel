@@ -21,11 +21,11 @@
 <style lang="scss">
   @import '../../sass/_variables.scss';
   .bg-black .pagination__load {
-    background-color: $clr-main;
+    background-color: $dark-secondary-color;
   }
   .pagination__load {
     position: fixed;
-    background-color: $clr-white;
+    background-color: $light-primary-color;
     width: 100%;
     inset: 0;
     height: 100%;
@@ -37,17 +37,17 @@
     justify-content: center;
   }
   .bg-black .pagination__load-content {
-    border: 5px solid $clr-main;
-    border-top-color: $clr-white;
-    background-color: $clr-main;
+    border: 5px solid $dark-secondary-color;
+    border-top-color: $dark-primary-color;
+    background-color: $dark-secondary-color;
   }
   .pagination__load-content {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 5px solid $clr-white;
-    border-top-color: $clr-main;
-    background-color: $clr-white;
+    border: 5px solid $light-primary-color;
+    border-top-color: $light-secondary-color;
+    background-color: $light-primary-color;
     transform: rotate(0deg);
     animation: anim-pagination__load 1s linear infinite;
   }

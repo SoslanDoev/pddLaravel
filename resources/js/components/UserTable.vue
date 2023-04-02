@@ -15,7 +15,7 @@
       (1000) 
     </a>
     <a href="#" class="table__create" @click.prevent="deleteTable()">
-      <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-x"><g><path d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" fill="none" r="4" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="13.1" y2="8.9"/><line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="8.9" y2="13.1"/></g></g></g></svg>
+      <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-x"><g><path class="table__create-image-path" d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" fill="none" r="4" stroke="#000000" class="table__create-image-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line class="table__create-image-path" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="13.1" y2="8.9"/><line class="table__create-image-path" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="8.9" y2="13.1"/></g></g></g></svg>
       Удалить
     </a>
   </div>
@@ -183,8 +183,17 @@
   .fade__group-leave-active {
     display: none;
   }
+  .table__create-image-path {
+    stroke: $light-text-color;
+    transition: $transition-default;
+  }
+  .bg-black {
+    .table {
+      box-shadow: $dark-shadow-default;
+    }
+  }
   .table {
-    box-shadow: $shadow-default;
+    box-shadow: $light-shadow-default;
     border-radius: 10px;
     overflow-y: hidden;
     overflow-x: auto;
@@ -201,6 +210,10 @@
         transition: $transition-default;
       }
     }
+    &__pages {
+      color: $light-secondary-color;
+      transition: $transition-default;
+    }
     &__images {
       margin: 30px 0;
       width: 100%;
@@ -214,7 +227,7 @@
      //  inset: 0;
      //  width: 100%;
      //  height: 100%;
-     //  background: linear-gradient(rgba($clr-main, 0.7), rgba($clr-main2, 0.8));
+     //  background: linear-gradient(rgba($light-secondary-color, 0.7), rgba($light-secondary-color, 0.8));
      //}
       box-shadow: 0 7px 25px rgba(68, 71, 90, 0.8);
     }
@@ -224,6 +237,10 @@
       overflow: hidden;
       border-radius: 10px;
       object-fit: cover;
+    }
+    .bg-black &__create-box{
+      color: $dark-text-color;
+      transition: $transition-default;
     }
     &__create-box {
       padding: 0 0 10px;
@@ -237,8 +254,8 @@
       margin: 20px 0;
     }
     .bg-black &__pages {
-      background-color: $clr-main;
-      border-bottom: 2px solid $clr-white; 
+      background-color: $dark-secondary-color;
+      border-bottom: 2px solid $dark-primary-color; 
       transition: $transition-default;
     }
     &__pages {
@@ -247,7 +264,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: $clr-white;
+      background-color: $light-primary-color;
       transition: $transition-default;
     }
     &__create-image {
@@ -257,74 +274,86 @@
       object-fit: cover;
     }
     .bg-black .table__create-image-path{
-      stroke: $clr-white;
+      stroke: $dark-primary-color;
       transition: $transition-default;
     }
     &__inner {
-      color: $clr-main;
+      color: $light-secondary-color;
       overflow: hidden;
       width: 100%;
     }
     .bg-black &__th{
       border-top: 4px solid transparent;
-      border-left: 2px solid $clr-white;
-      border-bottom: 2px solid $clr-white;
-      background: $clr-main;
-      color: $clr-white;
+      border-left: 2px solid $dark-primary-color;
+      border-bottom: 2px solid $dark-primary-color;
+      background: $dark-secondary-color;
+      color: $dark-text-color;
+      transition: $transition-default;
+    }
+    .bg-black &__pages {
+      color: $dark-text-color;
+      transition: $transition-default;
+    }
+    .bg-black &__tr {
+      color: $dark-text-color;
       transition: $transition-default;
     }
     &__th {
       padding: 10px;
       transition: $transition-default;
-      border-top: 4px solid $clr-main;
-      border-left: 2px solid $clr-main;
-      border-bottom: 2px solid $clr-main;
-      background: $clr-white;
+      border-top: 4px solid $light-secondary-color;
+      border-left: 2px solid $light-secondary-color;
+      border-bottom: 2px solid $light-secondary-color;
+      background: $light-primary-color;
       text-align: center;
-      color: $clr-main;
+      color: $light-secondary-color;
       &:first-child {
         border-left: none;
       }
     }
+    .bg-black {
+      &__tr:hover {
+        background-color: $dark-background-color;
+        transition: $transition-default;
+        color: $dark-secondary-color;
+      }
+    }
     &__tr {
       padding-left: 20px;
-      &:last-child .table__td{
-        border-bottom: 0;
-      }
       &:hover .table__td {
-        background-color: $clr-grey;
+        background-color: $light-background-color;
         transition: $transition-default;
-        color: $clr-main;
+        color: $light-secondary-color;
       }
     }
     .bg-black &__tr {
       &:hover .table__td {
-        background-color: $clr-main2;
+        background-color: $dark-background-color;
         transition: $transition-default;
-        color: $clr-white;
+        color: $dark-text-color;
       }
     }
     .bg-black &__td {
-      border-top: 2px solid $clr-white;
-      border-bottom: 2px solid $clr-white;
-      border-left: 2px solid $clr-white;
-      background-color: $clr-main;
-      color: $clr-white;
+      border-top: 2px solid $dark-primary-color;
+      border-bottom: 2px solid $dark-primary-color;
+      border-left: 2px solid $dark-primary-color;
+      background-color: $dark-secondary-color;
+      color: $dark-text-color;
       transition: $transition-default;
       &:hover {
-        background-color: $clr-main;
+        background-color: $dark-secondary-color;
         transition: $transition-default;
-        color: $clr-white;
+        color: $dark-primary-color;
       }
     }
     &__td {
       text-align: center;
       padding: 15px 35px;
-      border-top: 2px solid $clr-main;
-      border-bottom: 2px solid $clr-main;
-      border-left: 2px solid $clr-main;
-      background-color: $clr-white;
-      color: $clr-main;
+      border-top: 2px solid $light-secondary-color;
+      border-bottom: 2px solid $light-secondary-color;
+      border-left: 2px solid $light-secondary-color;
+      background-color: $light-primary-color;
+      color: $light-secondary-color;
       transition: $transition-default;
       &:first-child {
         padding-left: 20px;
@@ -347,15 +376,17 @@
     }
     .bg-black &__btn:hover{
       transition: $transition-default;
-      background-color: $clr-white;
-      color: $clr-main;
+      background-color: $dark-primary-color;
+      color: $dark-secondary-color;
     }
     .bg-black &__btn {
-      background-color: $clr-white;
-      color: $clr-main;
+      background-color: $dark-text-color;
+      color: $dark-secondary-color;
+      transition: $transition-default;
       &:hover {
-        background-color: $clr-main;
-        color: $clr-white;
+        background-color: $dark-background-color;
+        color: $dark-text-color;
+        transition: $transition-default;
       }
     }
     &__btn {
@@ -364,12 +395,13 @@
       padding: 10px;
       border-radius: 4px;
       border: none;
-      background-color: $clr-main;
-      color: $clr-white;
+      background-color: $light-text-color;
+      color: $light-secondary-color;
       transition: $transition-default;
       cursor: pointer;
       &:hover {
-        background-color: $clr-main2;
+        background-color: $light-background-color;
+        color: $light-text-color;
         transition: $transition-default;
       }
     }
