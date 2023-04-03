@@ -37,8 +37,8 @@
     justify-content: center;
   }
   .bg-black .pagination__load-content {
-    border: 5px solid $dark-secondary-color;
-    border-top-color: $dark-primary-color;
+    border: 5px solid $dark-background-color;
+    border-top-color: $dark-secondary-color;
     background-color: $dark-secondary-color;
   }
   .pagination__load-content {

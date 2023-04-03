@@ -47,7 +47,7 @@
             </tr>
           </thead>
           <tbody>
-            <TransitionGroup name="fade__group">
+            <!-- <TransitionGroup name="fade__group"> -->
               <!-- <tr class="table__tr" v-for="item in pagination" :key="item.id"> -->
               <tr class="table__tr" v-for="item in pagination" :key="item.id">
                 <td class="table__td">{{ item.data.id }}</td>
@@ -57,7 +57,7 @@
                 </td>
                 <td class="table__td">{{item.data.results[0].grade + item.data.results[1].grade + item.data.results[2].grade}}</td>
               </tr>
-            </TransitionGroup>
+            <!-- </TransitionGroup> -->
           </tbody>
         </table>
       </div>

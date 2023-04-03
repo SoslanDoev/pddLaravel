@@ -88,12 +88,26 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.insertionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.insertionSort),
           ]),
-          new vnavigation.Navigation('Вставками', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Кучей', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.heapSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.heapSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.heapSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.heapSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.heapSort),
+          ]),
+          new vnavigation.Navigation('Плавная', 'bubble2.gif', [ // Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.smoothSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.smoothSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.smoothSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.smoothSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.smoothSort),
+          ]),
+          new vnavigation.Navigation('Терпеливая', 'bubble2.gif', [ // не Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.patienceSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.patienceSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.patienceSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.patienceSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.patienceSort),
           ]),
         ],
       }
@@ -103,6 +117,7 @@
         item.active = true
       },
       sortStart(element, name) {
+        console.log('element', element.func(this.$store.state.applicants.data, element.name))
         this.$store.commit('UPDATE_USERS', element.func(this.$store.state.applicants.data, element.name))
         localStorage.setItem('methods', `${name}`)
         this.$store.commit('GET_LOCAL_STORAGE')
