@@ -6,7 +6,7 @@
       </div>
       <div class="test__info">
         <ul id="navigation__list" class="test__info-list navigation__list">
-          <li class="navigation__item" v-for="item in navigationList" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
+          <li class="navigation__item" v-for="item in navigationListCalc" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
             <a href="#" @click.prevent="item.active = !item.active" class="navigation__link">{{ item.name }}</a>
             <Transition name="fade" mode="out-in">
               <ul class="navigation__item-list" v-if="item.menu && item.active == true">
@@ -132,6 +132,17 @@
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.bogoSort),
           ]),
         ],
+      }
+    },
+    computed: {
+      navigationListCalc() {
+        /*
+          Функция выводит список
+          Входные параметры: 
+            Ничего 
+          Выход: массив 
+        */
+        return this.navigationList.sort((a, b) => a.name > b.name ? 1 : -1);
       }
     },
     methods: {
