@@ -31,11 +31,13 @@
       // Измение функий Vuex
       ...mapMutations([
         'SET_PAGES_SPEC', // Изменеие названия страниц 
+
       ]),
       // Измение функий Vuex
       // Получение функции из VUEX
       ...mapActions([
         'GET_APPLICANTS_API',
+        'SET_TEST'
       ]),      
       // Получение функции из VUEX
       pagesMutations(name) {
@@ -64,7 +66,8 @@
         item.active = true
       },
       sortStart(element, name) {
-        this.$store.commit('UPDATE_USERS', element.func(this.$store.state.users, element.name))
+        // this.$store.commit('UPDATE_USERS', element.func(this.$store.state.users, element.name))
+        this.SET_TEST(element.func(this.$store.state.users, element.name))
         localStorage.setItem('methods', `${name}`)
         this.$store.commit('GET_LOCAL_STORAGE')
       }

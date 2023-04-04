@@ -1,4 +1,13 @@
 export default {
+  SET_TEST(state, payload) {
+    /*
+      Функция изменяет массив 
+      Входные параметры: 
+        payload - Массив
+      Выход: Ничего (Изменение state)
+    */
+   state.data = payload
+  },
   SET_SERVER_APPLICANTS(state, payload) {
     /*
       Функция добавляет в массив студентов

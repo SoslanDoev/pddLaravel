@@ -8,39 +8,43 @@ export const heapSort = (arr, keyName = 'id') => {
     Выход: отсортированный массив
   */
   // Строим двоичную кучу
-  for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {
-    heapify(arr, arr.length, i);
-  }
-  // Извлекаем элементы по одному и перестраиваем кучу
-  for (let i = arr.length - 1; i > 0; i--) {
-    // Перемещаем текущий корень в конец массива
-    [arr[0], arr[i]] = [arr[i], arr[0]];
-    // Перестраиваем кучу без последнего элемента
+  const n = arr.length;
+  // Построение кучи (перегруппируем массив)
+  for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+    heapify(arr, n, i, keyName);
+  // Один за другим извлекаем элементы из кучи
+  for (let i = n - 1; i > 0; i--) {
+    // Перемещаем текущий корень в конец
+    const temp = arr[0];
+    arr[0] = arr[i];
+    arr[i] = temp;
+    // вызываем процедуру heapify на уменьшенной куче
     heapify(arr, i, 0, keyName);
   }
   return arr;
 }
 
-const heapify = (arr, n, i, keyName) => { // Вспомогательная функция 
-  let largest = i;  // Инициализируем наибольший элемент как корень
-  const left = 2 * i + 1;  // Левый потомок
-  const right = 2 * i + 2;  // Правый потомок
+function heapify(arr, n, i, keyName) {
+  let largest = i; // Инициализируем наибольший элемент как корень
+  const l = 2 * i + 1; // левый = 2*i + 1
+  const r = 2 * i + 2; // правый = 2*i + 2
+  // Если левый дочерний элемент больше корня
   if (keyName == 'score') {
-    // Если левый потомок больше родительского элемента
-    if (left < n && arr[left].score < arr[largest].score) largest = left;
-    // Если правый потомок больше наибольшего элемента
-    if (right < n && arr[right].score < arr[largest].score) largest = right;
+    if (l < n && arr[l].score < arr[largest].score) largest = l;
+    // Если правый дочерний элемент больше, чем самый большой элемент на данный момент
+    if (r < n && arr[r].score < arr[largest].score) largest = r;
+    // Если самый большой элемент не корень
   } else {
-    // Если левый потомок больше родительского элемента
-    if (left < n && arr[left][keyName] > arr[largest][keyName]) largest = left;
-    // Если правый потомок больше наибольшего элемента
-    if (right < n && arr[right][keyName] > arr[largest][keyName]) largest = right;
+    if (l < n && arr[l].data[keyName] > arr[largest].data[keyName]) largest = l;
+    // Если правый дочерний элемент больше, чем самый большой элемент на данный момент
+    if (r < n && arr[r].data[keyName] > arr[largest].data[keyName]) largest = r;
+    // Если самый большой элемент не корень
   }
-  // Если наибольший элемент не корень
   if (largest !== i) {
-    // Обменять корень с наибольшим элементом
-    [arr[i], arr[largest]] = [arr[largest], arr[i]];
-    // Перестроить кучу с наибольшим элементом в качестве корня
+    const swap = arr[i];
+    arr[i] = arr[largest];
+    arr[largest] = swap;
+    // Рекурсивно сверху вниз вызываем процедуру heapify
     heapify(arr, n, largest, keyName);
   }
 }

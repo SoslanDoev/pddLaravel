@@ -26,6 +26,7 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
   import vUserTable from '@/components/UserTable.vue' // 
   import ExampleGifs from '@/components/ExampleGifs.vue'
   import vsort from '@/sort'
@@ -113,12 +114,16 @@
       }
     },
     methods: {
+      ...mapMutations([
+        'SET_TEST'
+      ]),
       activeLink(item) {
         item.active = true
       },
       sortStart(element, name) {
         console.log('element', element.func(this.$store.state.applicants.data, element.name))
-        this.$store.commit('UPDATE_USERS', element.func(this.$store.state.applicants.data, element.name))
+        this.SET_TEST(element.func(this.$store.state.applicants.data, element.name))
+        // this.$store.commit('UPDATE_USERS', element.func(this.$store.state.applicants.data, element.name))
         localStorage.setItem('methods', `${name}`)
         this.$store.commit('GET_LOCAL_STORAGE')
       }
@@ -135,6 +140,9 @@
     }
   }
   .test {
+    &__main {
+      margin: 0 0 20px 0;
+    }
     &__inner {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
