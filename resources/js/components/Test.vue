@@ -68,7 +68,7 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.cocktailSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.cocktailSort),
           ]),
-          new vnavigation.Navigation('Слиянием(F)', 'bubble2.gif', [ // не Не работает
+          new vnavigation.Navigation('Слиянием', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.mergeSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.mergeSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.mergeSort),
@@ -103,14 +103,21 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.smoothSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.smoothSort),
           ]),
-          new vnavigation.Navigation('Терпеливая', 'bubble2.gif', [ // не Работает
+          new vnavigation.Navigation('Терпеливая', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.patienceSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.patienceSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.patienceSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.patienceSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.patienceSort),
           ]),
-          new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ // не Работает
+          new vnavigation.Navigation('Гномья', 'bubble2.gif', [ // Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.gnomeSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.gnomeSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.gnomeSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.gnomeSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.gnomeSort),
+          ]),
+          new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bogoSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bogoSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bogoSort),
