@@ -7,6 +7,7 @@ import { insertionSort } from './InsertSort'
 import { heapSort } from './HeapSort'
 import { smoothSort } from './SmoothSort'
 import { patienceSort } from './PatienceSort'
+import { bogoSort } from './BogoSort'
 // Сортировка слиянием
 const merge = (arrFirst, arrSecond, keyName = 'score') => {
   let
@@ -61,4 +62,5 @@ export default {
   heapSort, // Сортировка кучей
   smoothSort, // Плавная сортировка
   patienceSort, // Терпеливая сортировка 
+  bogoSort, // Рандномная сортировка
 }

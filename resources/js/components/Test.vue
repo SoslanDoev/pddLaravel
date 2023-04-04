@@ -110,6 +110,13 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.patienceSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.patienceSort),
           ]),
+          new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ // не Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.bogoSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.bogoSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bogoSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bogoSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.bogoSort),
+          ]),
         ],
       }
     },
