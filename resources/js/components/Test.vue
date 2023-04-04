@@ -117,6 +117,13 @@
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.gnomeSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.gnomeSort),
           ]),
+          new vnavigation.Navigation('С помощью двоичного дерева', 'bubble2.gif', [ // Работает
+            new vnavigation.NavigationMenu('id', 'Id', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu('name', 'Имя', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu('score', 'Баллы', vsort.binaryTreeSort),
+          ]),
           new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bogoSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bogoSort),

@@ -10,6 +10,7 @@ import { patienceSort } from './PatienceSort'
 import { bogoSort } from './BogoSort'
 import { gnomeSort } from './GnomeSort'
 import { mergeSort } from './MergeSort'
+import { binaryTreeSort } from './BinaryTreeSort'
 
 export default {
   sortBuiltIn, // Встроенная сортировка
@@ -25,4 +26,5 @@ export default {
   patienceSort, // Терпеливая сортировка 
   bogoSort, // Рандномная сортировка
   gnomeSort, // Гномья сортировка 
+  binaryTreeSort, // Сортировка с помощью двоичного дерева
 }
