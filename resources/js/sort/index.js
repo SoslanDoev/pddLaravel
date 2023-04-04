@@ -11,6 +11,7 @@ import { bogoSort } from './BogoSort'
 import { gnomeSort } from './GnomeSort'
 import { mergeSort } from './MergeSort'
 import { binaryTreeSort } from './BinaryTreeSort'
+import { combSort } from './CombSort'
 
 export default {
   sortBuiltIn, // Встроенная сортировка
@@ -27,4 +28,5 @@ export default {
   bogoSort, // Рандномная сортировка
   gnomeSort, // Гномья сортировка 
   binaryTreeSort, // Сортировка с помощью двоичного дерева
+  combSort, // Сортировка расческой 
 }
