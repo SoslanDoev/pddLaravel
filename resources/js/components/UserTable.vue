@@ -47,6 +47,7 @@
           <!-- </div> -->
           <p class="table__pages-text">{{ $store.state.spec.spec[$store.state.page.pagesSpec].name }}</p>
         </div>
+        <input type="text" class="table__input" v-model="searchTable" placeholder="Введите абитуриента">
         <table class="table__inner" cellspacing='0'>
           <thead class="table__thead">
             <tr class="table__tr">
@@ -100,6 +101,7 @@
     data() {
       return {
         role: 'guest',
+        searchTable: '',
         limit: 10, // Предел страниц
         total: 0, // Кол-во страниц
         pages: [], // Массив страниц
@@ -175,6 +177,11 @@
       }
     },
     computed: {
+      filteredList() {
+        return this.$store.state.applicants.data.filter((e) => {
+          return e.data.name.toLowerCase().includes(this.searchTable.toLowerCase())
+        })
+      },
       pagination() {
         /*
           Функция вычисляет пагинацию
@@ -182,7 +189,8 @@
             Ничего 
           Выход: Пагинация
         */
-        return this.paginationCalc(this.$store.state.applicants.data)
+       return this.paginationCalc(this.filteredList)
+        // return this.paginationCalc(this.$store.state.applicants.data)
       }
     },
   }
@@ -211,12 +219,28 @@
       box-shadow: $dark-shadow-default;
     }
   }
+  .bg-black .table {
+    &__input {
+      background-color: $dark-secondary-color;
+      color: $dark-text-color;
+    }
+  }
   .table {
     box-shadow: $light-shadow-default;
     border-radius: 10px;
     overflow-y: hidden;
     overflow-x: auto;
     margin: 0 0 20px;
+    &__input {
+      background-color: $light-primary-color;
+      transition: $transition-default;
+      width: 100%;
+      height: 40px;
+      font-size: 0.875rem;
+      padding: 5px;
+      outline: none;
+      border: none;
+    }
     &__null {
       display: flex;
       flex-direction: column;
@@ -292,7 +316,9 @@
       justify-content: space-between;
       align-items: center;
       background-color: $light-primary-color;
-      transition: $transition-default;
+      //transition: $transition-default;
+      border-bottom: 2px solid $light-secondary-color; 
+      //transition: $transition-default;
     }
     &__create-image {
       transition: $transition-default;
@@ -310,7 +336,7 @@
       width: 100%;
     }
     .bg-black &__th{
-      border-top: 4px solid transparent;
+      border-top: 4px solid $dark-primary-color;
       border-left: 2px solid $dark-primary-color;
       border-bottom: 2px solid $dark-primary-color;
       background: $dark-secondary-color;
