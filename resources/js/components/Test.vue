@@ -1,28 +1,31 @@
 <template>
+  <ExampleGifs v-model:show="exampleGifsActive" :name="exampleImage"></ExampleGifs>
   <div class="test__main">
     <div class="test__inner">
       <div class="test__content">
       <vUserTable :table="$store.state.applicants.data"/>
       </div>
       <div class="test__info">
-        <ul id="navigation__list" class="test__info-list navigation__list">
-          <li class="navigation__item" v-for="item in navigationListCalc" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
-            <a href="#" @click.prevent="item.active = !item.active" class="navigation__link">{{ item.name }}</a>
-            <Transition name="fade" mode="out-in">
-              <ul class="navigation__item-list" v-if="item.menu && item.active == true">
-                <li class="navigation__item-item" v-for="element in item.menu" :key="element.id" @click.prevent="sortStart(element, item.name)">
-                  {{ element.title }}
-                </li>
-    <!-- console.log(new vnavigation.NavigationMenu().results) -->
-                <li class="navigation__item-item" @click.prevent="exampleGifsActive = !exampleGifsActive, exampleImage = item.image">
-                  Посмотреть
-                  {{ $store.state.applicants.discipline[0] }}
-                </li>
-              </ul>
-            </Transition>
-          </li>
-        </ul>
-      </div>
+          <Transition name="fade" mode="out-in">
+          <ul id="navigation__list" class="test__info-list navigation__list" v-if="true">
+            <li class="navigation__item" v-for="item in navigationListCalc" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
+              <a href="#" @click.prevent="item.active = !item.active" class="navigation__link">{{ item.name }}</a>
+              <Transition name="fade" mode="out-in">
+                <ul class="navigation__item-list" v-if="item.menu && item.active == true">
+                  <li class="navigation__item-item" v-for="element in item.menu" :key="element.id" @click.prevent="sortStart(element, item.name)">
+                    {{ element.title }}
+                  </li>
+      <!-- console.log(new vnavigation.NavigationMenu().results) -->
+                  <li class="navigation__item-item" @click.prevent="exampleGifsActive = !exampleGifsActive, exampleImage = item.image">
+                    Посмотреть
+                    {{ $store.state.applicants.discipline[0] }}
+                  </li>
+                </ul>
+              </Transition>
+            </li>
+          </ul>
+        </Transition>
+        </div>
     </div>
   </div>
 </template>
@@ -42,7 +45,7 @@
         exampleGifsActive: false,
         exampleImage: '',
         navigationList: [
-          new vnavigation.Navigation('Встроенный', 'bubble2.gif',[ // Работает
+          new vnavigation.Navigation('Встроенный', '../../assets/bubble.gif`',[ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.sortBuiltIn),
@@ -52,7 +55,7 @@
             new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.sortBuiltIn),
           ]),
-          new vnavigation.Navigation('Пузырек', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Пузырек', 'bubble.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bubbleSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bubbleSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bubbleSort),
@@ -419,17 +422,12 @@
       &__item {
         min-height: 60px;
         border-radius: 0;
-        text-align: center;
+        text-align: left;
         max-width: 250px;
       }
     }
   }
-  @media screen and (max-width: 1200px) {
-    .test__info-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media screen and (max-width: 1110px) {
+  @media screen and (max-width: 1510px) {
     .test {
       &__info {
         max-height: 250px;
@@ -440,10 +438,35 @@
         grid-template-columns: repeat(1, 1fr);
       }
     }
+    .bg-black {
+      .navigation__menu--active {
+        background: $dark-primary-color;
+      }
+    }
     .navigation {
       &__item {
         text-align: left;
+        max-width: 100%;
+        &-item:hover {
+          background-color: transparent;
+        }
+        &-list {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 5px;
+        }
       }
+      &__menu--active {
+        grid-column: 1/4;
+        background: $light-text-color;
+        padding: 15px 15px 15px 45px;
+      }
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .test__info-list {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   @media screen and (max-width: 850px) {

@@ -1,7 +1,8 @@
 <template>
   <Transition name="examplegifs-trans" mode="out-in">
     <div class="examplegifs__inner" v-if="show === true" @click.stop='hideDialog'>
-      <img :src="require(`@/assets/images/${name}`)" class="examplegifs__image" alt="Сортировка пузырьком">
+      <img :src="name" class="examplegifs__image" alt="Сортировка пузырьком">
+      <!-- <img :src="`../../assets/${name}.gif`" class="examplegifs__image" alt="Сортировка пузырьком"> -->
     </div>
 </Transition>
 </template>
@@ -16,7 +17,6 @@
       },
       name: {
         type: String,
-        default: '',
       }
     },
     methods: {

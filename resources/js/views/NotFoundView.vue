@@ -8,6 +8,9 @@
 
 <style lang="scss">
   @import '../../sass/_variables.scss';
+  .bg-black .notfound {
+    color: $dark-text-color;
+  }
   .notfound {
     display: flex;
     flex-direction: column;
@@ -15,6 +18,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    color: $light-secondary-color;
     &__number {
       font-size: 9.375rem;
       line-height: 6.25rem;
@@ -22,16 +26,19 @@
     &__title {
       font-size: 3.125rem;
     }
+    .bg-black {
+      color: $dark-text-color;
+    }
     .bg-black &__link {
       &:hover {
-        color: $dark-primary-color;
+        color: $dark-secondary-color;
       }
     }
     &__link {
       font-size: 1.25rem;
       transition: $transition-default;
       &:hover {
-        color: $light-secondary-color;
+        color: $light-text-color;
         transition: $transition-default;
       }
     }
