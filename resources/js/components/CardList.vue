@@ -108,12 +108,17 @@
       }
     }
   }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 750px) {
     .cards {
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     }
     .card {
-      padding: 10px;
+      //padding: 10px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
     }
   }
 </style>
