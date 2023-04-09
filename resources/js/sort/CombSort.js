@@ -25,13 +25,22 @@ export const combSort = (arr, keyName = 'id') => {
         }
         i++;
       }
-    }
-    while (i + gap < len) {
-      if (arr[i].data[keyName] > arr[i + gap].data[keyName]) {
-        [arr[i], arr[i + gap]] = [arr[i + gap], arr[i]];
-        swapped = true;
+    } else if (Number.isInteger(keyName)) { 
+      while (i + gap < len) {
+        if (arr[i].data.results[keyName].grade < arr[i + gap].data.results[keyName].grade) {
+          [arr[i], arr[i + gap]] = [arr[i + gap], arr[i]];
+          swapped = true;
+        }
+        i++;
       }
-      i++;
+    } else {
+      while (i + gap < len) {
+        if (arr[i].data[keyName] > arr[i + gap].data[keyName]) {
+          [arr[i], arr[i + gap]] = [arr[i + gap], arr[i]];
+          swapped = true;
+        }
+        i++;
+      }
     }
   }
   return arr;

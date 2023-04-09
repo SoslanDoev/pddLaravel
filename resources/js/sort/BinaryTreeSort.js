@@ -37,6 +37,20 @@ function addNode(node, newNode, keyName) {
         addNode(node.right, newNode, keyName);
       }
     }
+  } else if (Number.isInteger(keyName)) {
+    if (newNode.value.data.results[keyName].grade > node.value.data.results[keyName].grade) {
+      if (node.left === null) {
+        node.left = newNode;
+      } else {
+        addNode(node.left, newNode, keyName);
+      }
+    } else {
+      if (node.right === null) {
+        node.right = newNode;
+      } else {
+        addNode(node.right, newNode, keyName);
+      }
+    }
   } else {
     if (newNode.value.data[keyName] < node.value.data[keyName]) {
       if (node.left === null) {

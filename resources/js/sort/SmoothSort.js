@@ -31,6 +31,10 @@ function compare(a, b, keyName) {
     if (a.score < b.score) return 1
     if (a.score > b.score) return -1
     return 0
+  } else if (Number.isInteger(keyName)) {
+    if (a.data.results[keyName].grade < b.data.results[keyName].grade) return 1
+    if (a.data.results[keyName].grade > b.data.results[keyName].grade) return -1
+    return 0
   } else {
     if (a.data[keyName] < b.data[keyName]) return -1
     if (a.data[keyName] > b.data[keyName]) return 1

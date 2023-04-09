@@ -14,6 +14,10 @@ export const bogoSort = (arr, keyName = 'id') => {
         if (arr[i-1].score < arr[i].score) {
           return false
         }
+      } else if (Number.isInteger(keyN)) {
+        if (arr[i-1].data.results[keyN].grade < arr[i].data.results[keyN].grade) {
+          return false
+        }
       } else {
         if (arr[i-1].data[keyN] > arr[i].data[keyN]) {
           return false;

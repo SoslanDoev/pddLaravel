@@ -20,6 +20,12 @@ export const cocktailSort = (arr, keyName = 'id') => {
           swapped = true;
         }
       } 
+      else if (Number.isInteger(keyName)) {
+        if (arr[i].data.results[keyName].grade < arr[i+1].data.results[keyName].grade) {
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          swapped = true;
+        }
+      }
       else if (arr[i].data[keyName] > arr[i + 1].data[keyName]) {
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
         swapped = true;
@@ -32,6 +38,12 @@ export const cocktailSort = (arr, keyName = 'id') => {
       if (keyName == 'score') {
         if (arr[i].score > arr[i-1].score) {
           [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
+          swapped = true;
+        }
+      }
+      else if (Number.isInteger(keyName)) {
+        if (arr[i].data.results[keyName].grade < arr[i+1].data.results[keyName].grade) {
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
           swapped = true;
         }
       }

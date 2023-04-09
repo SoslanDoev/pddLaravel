@@ -34,6 +34,11 @@ function heapify(arr, n, i, keyName) {
     // Если правый дочерний элемент больше, чем самый большой элемент на данный момент
     if (r < n && arr[r].score < arr[largest].score) largest = r;
     // Если самый большой элемент не корень
+  } else if (Number.isInteger(keyName)) {
+    if (l < n && arr[l].data.results[keyName].grade < arr[largest].data.results[keyName].grade) largest = l;
+    // Если правый дочерний элемент больше, чем самый большой элемент на данный момент
+    if (r < n && arr[r].data.results[keyName].grade < arr[largest].data.results[keyName].grade) largest = r;
+    // Если самый большой элемент не корень
   } else {
     if (l < n && arr[l].data[keyName] > arr[largest].data[keyName]) largest = l;
     // Если правый дочерний элемент больше, чем самый большой элемент на данный момент

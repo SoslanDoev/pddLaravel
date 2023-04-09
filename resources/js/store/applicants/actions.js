@@ -19,11 +19,13 @@ export default {
       method: 'GET',
     })
       .then((res) => {
+        console.log(res)
         commit('SET_SERVER_APPLICANTS', res.data.data)
+        commit('SET_DISCIPLINE_APPLICANTS', res.data.data[0].results)
         commit('SET_PAGE_APPLICANTS')
       })
       .catch((error) => {
-        console.error('error')
+        console.error(error)
       })
     // http://127.0.0.1:8000/api/applicants/2count=500
     // for (let i = 0; i < count; i++) {

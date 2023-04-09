@@ -22,6 +22,18 @@ export const gnomeSort = (arr, keyName = 'id') => {
           j++
         }
       }
+    } else if (Number.isInteger(keyName)) { 
+      if (arr[i - 1].data.results[keyName].grade >= arr[i].data.results[keyName].grade) {
+        i = j
+        j++
+      } else {
+        [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+        i--
+        if (i === 0) {
+          i = j
+          j++
+        }
+      }
     } else {
       if (arr[i - 1].data[keyName] <= arr[i].data[keyName]) {
         i = j

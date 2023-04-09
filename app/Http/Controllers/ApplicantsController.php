@@ -22,7 +22,12 @@ class ApplicantsController extends Controller
     // return ApplicantsResource::collection(Applicants::all());
     // return ApplicantsResource::collection(Applicants::paginate(500));
     // $data = Applicants::where('speciality_id', $spec)->paginate(100);
-    $data = Applicants::where('speciality_id', $spec)->paginate($count);
+    // $data = Applicants::where('speciality_id', $spec)->paginate($count);
+    if ($count == 0) {
+      $data = Applicants::where('speciality_id', $spec)->get();
+    } else {
+      $data = Applicants::where('speciality_id', $spec)->paginate($count);
+    } 
     // return response()->json($data);
     return ApplicantsResource::collection($data);
     

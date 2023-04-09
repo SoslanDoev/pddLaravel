@@ -5,7 +5,7 @@
       <vTopBar/>
       <vCardList/> <!--Карточки-->
       <Transition name="fade" mode="out-in">
-        <vTest v-if="Number.isInteger($store.state.page.pages)"/>
+        <vTest v-if="Number.isInteger($store.state.page.pagesSpec)"/>
         <div v-else class="vTest__undefined">
           <h3 class="vTest__undefined-title title">Выберите специальность</h3>
         </div>

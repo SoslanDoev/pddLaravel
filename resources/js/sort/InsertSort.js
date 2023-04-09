@@ -15,8 +15,12 @@ export const insertionSort = (arr, keyName) => {
         arr[j + 1] = arr[j];
         j--;
       }
-    }
-    else {
+    } else if (Number.isInteger(keyName)) {
+      while (j >= 0 && arr[j].data.results[keyName].grade < current.data.results[keyName].grade) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+    } else {
       while (j >= 0 && arr[j].data[keyName] > current.data[keyName]) {
         arr[j + 1] = arr[j];
         j--;

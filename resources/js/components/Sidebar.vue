@@ -8,7 +8,7 @@
     </div>
     <ul id="sidebar__list" class="sidebar__list">
       <li class="sidebar__item" v-for="item in specList" :key="item.id" :class="{'sidebar__menu--active': active == item.id}">
-        <a href="#" @click.prevent="active = item.id, pagesMutations(item.pageId)" class="sidebar__link">{{ item.name }}</a>
+        <a href="#" @click.prevent="active = item.id, abit(item.id), pagesMutations(item.pageId)" class="sidebar__link">{{ item.name }}</a>
       </li>
     </ul>
   </div>
@@ -23,7 +23,8 @@
     name: "vSidebar",
     data() {
       return {
-        active: null,
+        active: false, // Вкл / Выкл анимации 
+        activeLink: false, // Вкл / Выкл ссылки
         specList: this.$store.state.spec.spec,
       }
     },
@@ -31,7 +32,7 @@
       // Измение функий Vuex
       ...mapMutations([
         'SET_PAGES_SPEC', // Изменеие названия страниц 
-
+        'SET_PAGES_APPLICANTS_DEFAULT', // Сброс страниц таблицы 
       ]),
       // Измение функий Vuex
       // Получение функции из VUEX
@@ -57,10 +58,15 @@
             n - Натуральное число (Специальность)
           Выход: Ничего (Отправление запроса на сервер) 
         */
-        this.GET_APPLICANTS_API(n)
+       if (this.activeLink == true) return
+       else {
+          this.activeLink = true
+          this.GET_APPLICANTS_API({count: 0, specID: n, page: null})
+          this.SET_PAGES_APPLICANTS_DEFAULT() // Сброс страниц таблицы 
+       }
         setTimeout(() => {
-          this.active = null
-        }, 200)
+          this.activeLink = this.active = false
+        }, 1000)
       },
       activeLink(item) {
         item.active = true
@@ -128,7 +134,6 @@
     &.active {
       width: 55px;
       & .sidebar__link {
-        width: 200%;
         transition: $transition-default;
         cursor: pointer;
       }
@@ -142,10 +147,15 @@
       flex-direction: column;
       gap: 20px;
     }
+    &__link {
+      width: inherit;
+      display: inline-block;
+    }
     &__item {
       color: $light-primary-color;
       position: relative;
-      width: 100%;
+      width: 250px;
+      display: inline-block;
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
       padding: 10px 0 10px 45px;

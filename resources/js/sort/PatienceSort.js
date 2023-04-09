@@ -52,6 +52,16 @@ export const patienceSort = (arr, keyName='id') => {
           j++
         }
       }
+    } else if (Number.isInteger(keyName)) {
+      while (i < firstStack.length && j < secondStack.length) {
+        if (firstStack[i].data.results[keyName].grade > secondStack[j].data.results[keyName].grade) {
+          mergedStack.push(firstStack[i])
+          i++
+        } else {
+          mergedStack.push(secondStack[j])
+          j++
+        }
+      }
     } else {
       // Слияние двух стеков
       while (i < firstStack.length && j < secondStack.length) {

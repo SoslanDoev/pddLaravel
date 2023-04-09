@@ -1,5 +1,5 @@
 <template>
-  <div class="table__create-box">
+  <div class="table__create-box" v-if="role == 'admin'">
     <p class="table__create-text">Добавить: </p>
     <a href="#" class="table__create" @click.prevent="createTable(5)">
       <!-- <img src="@/assets/images/plus.svg" class="table__create-image" alt="image"> -->
@@ -19,6 +19,11 @@
       <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-add"><g><path class="table__create-image-path" d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" class="table__create-image-path" fill="none" r="4" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line fill="none" class="table__create-image-path" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17" x2="23" y1="11" y2="11"/><line fill="none" stroke="#44475a" stroke-linecap="round" class="table__create-image-path" stroke-linejoin="round" stroke-width="2" x1="20" x2="20" y1="8" y2="14"/></g></g></g></svg>
       (1000) 
     </a>
+    <a href="#" class="table__create" @click.prevent="createTable(0)">
+      <!-- <img src="@/assets/images/plus.svg" class="table__create-image" alt="image"> -->
+      <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-add"><g><path class="table__create-image-path" d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" class="table__create-image-path" fill="none" r="4" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line fill="none" class="table__create-image-path" stroke="#44475a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17" x2="23" y1="11" y2="11"/><line fill="none" stroke="#44475a" stroke-linecap="round" class="table__create-image-path" stroke-linejoin="round" stroke-width="2" x1="20" x2="20" y1="8" y2="14"/></g></g></g></svg>
+     (Все)
+    </a>
     <a href="#" class="table__create" @click.prevent="deleteTable()">
       <svg height="800px" viewBox="0 0 24 24" class="table__create-image" width="800px" xmlns="http://www.w3.org/2000/svg"><title/><g id="Complete"><g id="user-x"><g><path class="table__create-image-path" d="M17,21V19a4,4,0,0,0-4-4H5a4,4,0,0,0-4,4v2" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><circle cx="9" cy="7" fill="none" r="4" stroke="#000000" class="table__create-image-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><line class="table__create-image-path" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="13.1" y2="8.9"/><line class="table__create-image-path" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="17.9" x2="22.1" y1="8.9" y2="13.1"/></g></g></g></svg>
       Удалить
@@ -26,13 +31,13 @@
   </div>
   <Transition name="fade" mode="out-in">
     <div class="table__null" v-if="table.length <= 0">
-      <h1 class="table__title">Таблица пуста</h1>
+      <h1 class="table__title">Загрузка . . .</h1>
     </div>
     <div class="table__items" v-else> 
       <div class="table">
         <div class="table__pages">
           <!-- <div class="table__pages-count__box" v-if="$store.state.applicants.data.length && total"> -->
-            <p class="table__pages-text">Страница: {{ page }}</p>
+            <p class="table__pages-text">Страница: {{ $store.state.page.pagesApplicants }}</p>
             <p class="table__pages-text">Из: {{ total }}</p>
             <p class="table__pages-text">Всего: {{ $store.state.applicants.data.length }}</p>
           <!-- </div> -->
@@ -40,7 +45,7 @@
             <!-- <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a> -->
             <!-- <a href="#" class="pagination__btn" v-if="page < ($store.state.users.length / 10)" @click.prevent="page++">next</a> -->
           <!-- </div> -->
-          <p class="table__pages-text">{{ $store.state.spec.spec[$store.state.page.pages].name }}</p>
+          <p class="table__pages-text">{{ $store.state.spec.spec[$store.state.page.pagesSpec].name }}</p>
         </div>
         <table class="table__inner" cellspacing='0'>
           <thead class="table__thead">
@@ -71,8 +76,8 @@
       </div> -->
     <div class="pagination">
       <div class="pagination__inner">
-        <button class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</button>
-        <button class="pagination__btn" v-if="page < ($store.state.applicants.data.length / 10)" @click.prevent="page++">next</button>
+        <button class="pagination__btn" v-if="$store.state.page.pagesApplicants!=1" @click.prevent="pagePrev">prev</button>
+        <button class="pagination__btn" v-if="$store.state.page.pagesApplicants < ($store.state.applicants.data.length / 10)" @click.prevent="pageNext">next</button>
       </div>
     </div>
   </div>
@@ -80,9 +85,11 @@
 </template>
 
 <script>
+  import PaginationLoad from '@/components/PaginationLoad.vue'
   import { mapMutations } from 'vuex'
   import {mapActions} from 'vuex'
   export default {
+    components: [PaginationLoad],
     name: 'UserTable',
     props: {
       table: {
@@ -92,7 +99,7 @@
     },
     data() {
       return {
-        page: 1, // Текущая страница 
+        role: 'guest',
         limit: 10, // Предел страниц
         total: 0, // Кол-во страниц
         pages: [], // Массив страниц
@@ -101,7 +108,9 @@
     methods: {
       // Получение функции из VUEX
       ...mapMutations([
-        'DEL_DATA_APPLICANTS'        
+        'DEL_DATA_APPLICANTS',    
+        'SET_PAGES_APPLICANTS_NEXT',
+        'SET_PAGES_APPLICANTS_PREV',
       ]),
       // Получение функции из VUEX
       // Получение функции из VUEX
@@ -109,6 +118,12 @@
         'GET_APPLICANTS_API'
       ]),
       // Получение функции из VUEX
+      pageNext() {
+        this.SET_PAGES_APPLICANTS_NEXT()
+      },
+      pagePrev() {
+        this.SET_PAGES_APPLICANTS_PREV()
+      },
       startPagination() {
         /*
           Функция считает кол-во страниц 
@@ -153,10 +168,9 @@
           Выход: Массив с элементами от from до to 
         */
         let 
-          page = this.page,
           limit = this.limit,
-          from = (page * limit) - limit,
-          to = (page * limit)
+          from = (this.$store.state.page.pagesApplicants * limit) - limit,
+          to = (this.$store.state.page.pagesApplicants * limit)
         return array.slice(from, to) 
       }
     },
@@ -203,6 +217,14 @@
     overflow-y: hidden;
     overflow-x: auto;
     margin: 0 0 20px;
+    &__null {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
     &__create {
       display: inline-flex;
       flex-direction: row;

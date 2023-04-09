@@ -1,3 +1,4 @@
 export default {
-  pages: null, // Переключение страниц специальностей
+  pagesSpec: null, // Переключение страниц специальностей
+  pagesApplicants: 1, // Таблицы абитуриентов
 }

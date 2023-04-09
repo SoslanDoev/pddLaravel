@@ -11,14 +11,26 @@ export const bubbleSort = (arr, keyName = 'id') => { // Работает
   if (arr.length < 2 || !arr) {return}
   for (let i = 0, endI = arr.length - 1; i < endI; i++) {
     let wasSwap = false
-    for (let j = 0, endJ = endI - i; j < endJ; j++) {
-      if (arr[j].score < arr[j + 1].score && keyName == 'score') {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-        wasSwap = true
+    if (keyName == 'score') {
+      for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (arr[j].score < arr[j + 1].score && keyName == 'score') {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+          wasSwap = true
+        }
       }
-      else if (arr[j].data[keyName] > arr[j + 1].data[keyName]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-        wasSwap = true
+    } else if (Number.isInteger(keyName)) {
+      for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (arr[j].data.results[keyName].grade < arr[j + 1].data.results[keyName].grade) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+          wasSwap = true
+        }
+      }
+    } else {
+      for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (arr[j].data[keyName] > arr[j + 1].data[keyName]) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+          wasSwap = true
+        }
       }
     }
     if (!wasSwap) break

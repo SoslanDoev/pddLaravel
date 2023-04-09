@@ -13,8 +13,10 @@
                 <li class="navigation__item-item" v-for="element in item.menu" :key="element.id" @click.prevent="sortStart(element, item.name)">
                   {{ element.title }}
                 </li>
+    <!-- console.log(new vnavigation.NavigationMenu().results) -->
                 <li class="navigation__item-item" @click.prevent="exampleGifsActive = !exampleGifsActive, exampleImage = item.image">
                   Посмотреть
+                  {{ $store.state.applicants.discipline[0] }}
                 </li>
               </ul>
             </Transition>
@@ -45,6 +47,9 @@
             new vnavigation.NavigationMenu('name', 'Имя', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.sortBuiltIn),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.sortBuiltIn),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.sortBuiltIn),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.sortBuiltIn),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.sortBuiltIn),
           ]),
           new vnavigation.Navigation('Пузырек', 'bubble2.gif', [ // Работает
@@ -53,6 +58,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bubbleSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bubbleSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.bubbleSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.bubbleSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.bubbleSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.bubbleSort),
           ]),
           new vnavigation.Navigation('Выбором', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.selectionSort),
@@ -60,6 +68,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.selectionSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.selectionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.selectionSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.selectionSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.selectionSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.selectionSort),
           ]),
           new vnavigation.Navigation('Шейкерная', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.cocktailSort),
@@ -67,6 +78,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.cocktailSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.cocktailSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.cocktailSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.cocktailSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.cocktailSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.cocktailSort),
           ]),
           new vnavigation.Navigation('Слиянием', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.mergeSort),
@@ -74,6 +88,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.mergeSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.mergeSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.mergeSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.mergeSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.mergeSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.mergeSort),
           ]),
           new vnavigation.Navigation('Быстрая', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.quickSort),
@@ -81,6 +98,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.quickSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.quickSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.quickSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.quickSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.quickSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.quickSort),
           ]),
           new vnavigation.Navigation('Вставками', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.insertionSort),
@@ -88,6 +108,10 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.insertionSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.insertionSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.insertionSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.insertionSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.insertionSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.insertionSort),
+            // data.results[keyName].grade
           ]),
           new vnavigation.Navigation('Кучей', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.heapSort),
@@ -95,6 +119,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.heapSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.heapSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.heapSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.heapSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.heapSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.heapSort),
           ]),
           new vnavigation.Navigation('Плавная', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.smoothSort),
@@ -102,6 +129,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.smoothSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.smoothSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.smoothSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.smoothSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.smoothSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.smoothSort),
           ]),
           new vnavigation.Navigation('Терпеливая', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.patienceSort),
@@ -109,6 +139,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.patienceSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.patienceSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.patienceSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.patienceSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.patienceSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.patienceSort),
           ]),
           new vnavigation.Navigation('Гномья', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.gnomeSort),
@@ -116,20 +149,29 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.gnomeSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.gnomeSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.gnomeSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.gnomeSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.gnomeSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.gnomeSort),
           ]),
-          new vnavigation.Navigation('С помощью двоичного дерева', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Двоичным деревом', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.binaryTreeSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.binaryTreeSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.binaryTreeSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.binaryTreeSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.binaryTreeSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.binaryTreeSort),
           ]),
-          new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ // Работает
+          new vnavigation.Navigation('Рандомная', 'bubble2.gif', [ //Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.bogoSort),
             new vnavigation.NavigationMenu('name', 'Имя', vsort.bogoSort),
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.bogoSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.bogoSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.bogoSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.bogoSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.bogoSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.bogoSort),
           ]),
           new vnavigation.Navigation('Расческой', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.combSort),
@@ -137,6 +179,9 @@
             new vnavigation.NavigationMenu('surname', 'Фамилия', vsort.combSort),
             new vnavigation.NavigationMenu('patronymic', 'Отчество', vsort.combSort),
             new vnavigation.NavigationMenu('score', 'Баллы', vsort.combSort),
+            new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.combSort),
+            new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.combSort),
+            new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.combSort),
           ]),
         ],
       }
@@ -184,7 +229,7 @@
     }
     &__inner {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       position: relative;
       width: 100%;
       gap: 30px;
@@ -197,6 +242,7 @@
       border-radius: 20px;
     }
     &__info {
+      grid-column: span 2;
       position: relative;
       height: 100%;
       background-color: $light-secondary-color;
@@ -210,6 +256,10 @@
         top: 0;
         bottom: 0;
         height: 100%;
+      }
+      &--title {
+        text-align: center;
+        margin: 0 0 20px 0;
       }
     }
     &__content, &__info { 
@@ -350,6 +400,30 @@
     //  box-shadow: 35px -35px 0 10px $light-primary-color;
     //  bottom: -50px;
     //}
+  }
+  @media screen and (max-width: 1550px) {
+    .test {
+      display: flex;
+      flex-direction: column-reverse;
+      &__inner {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      &__info-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    }
+    .navigation {
+      &__item {
+        min-height: 60px;
+        border-radius: 0;
+        text-align: center;
+        max-width: 250px;
+      }
+    }
   }
   @media screen and (max-width: 850px) {
     .navigation {

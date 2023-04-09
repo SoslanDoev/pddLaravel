@@ -23,8 +23,14 @@ export const quickSort = (array, keyName = 'id') => {
         while (array[rightIndex].score < pivotValue.score) {
           rightIndex--;
         }
-      }
-      else {
+      } else if (Number.isInteger(keyName)) {
+        while (array[leftIndex].data.results[keyName].grade > pivotValue.data.results[keyName].grade) {
+          leftIndex++;
+        }
+        while (array[rightIndex].data.results[keyName].grade < pivotValue.data.results[keyName].grade) {
+          rightIndex--;
+        }
+      } else {
         while (array[leftIndex].data[keyName] < pivotValue.data[keyName]) {
           leftIndex++;
         }

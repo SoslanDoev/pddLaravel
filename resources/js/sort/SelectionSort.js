@@ -11,11 +11,12 @@ const defaultCompare = (c, a, b) => {
     if (a.score > b.score) return -1
     else return 1
   }
+  if (Number.isInteger(c)) {
+    if (a.data.results[c].grade > b.data.results[c].grade) return -1
+    else return 1
+  }
   if (a.data[c] === b.data[c]) return 0
   return a.data[c] < b.data[c] ? -1 : 1
-  // return (c == 'score')
-    // ? a.score > b.score ? -1 : 1
-    // : a < b ? -1 : 1
 }
 
 export const selectionSort = (arr, keyName, compare = defaultCompare) => {
@@ -28,7 +29,6 @@ export const selectionSort = (arr, keyName, compare = defaultCompare) => {
     Выход: Отсортированный массив
     Статус: Работает (надо поменять if)
   */
- console.log(arr)
   const start= new Date().getTime()
   const { length } = arr;
   let minIndex;

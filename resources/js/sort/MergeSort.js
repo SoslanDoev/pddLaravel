@@ -25,7 +25,16 @@ export const mergeSort = (arr, keyName = 'id') => {
             tempArray[k] = arr[j];
             j++;
           }
-        } else {
+        } else if (Number.isInteger(keyName)) {
+          if (i < leftEnd && (j >= rightEnd || arr[i].data.results[keyName].grade >= arr[j].data.results[keyName].grade)) {
+            tempArray[k] = arr[i];
+            i++;
+          } else {
+            tempArray[k] = arr[j];
+            j++;
+          }
+        }
+        else {
           if (i < leftEnd && (j >= rightEnd || arr[i].data[keyName] <= arr[j].data[keyName])) {
             tempArray[k] = arr[i];
             i++;

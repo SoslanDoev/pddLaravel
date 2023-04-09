@@ -1,3 +1,5 @@
+import vnavigation from '@/class/Navigation'
+
 export default {
   SET_TEST(state, payload) {
     /*
@@ -7,6 +9,30 @@ export default {
       Выход: Ничего (Изменение state)
     */
    state.data = payload
+  },
+  SET_DISCIPLINE_APPLICANTS(state, payload) {
+    /*
+      Функция добавляет в массив предметов
+      Входные параметры: 
+        payload - Данные с сервера 
+      Выход: Ничего (Добавление данных в массив) МЕТОД
+    */
+    // console.log('da,', payload)
+    let res = []
+    payload.forEach((e) => {
+      res.push({id: e.id, subject: e.subject})
+    })
+    vnavigation.NavigationMenu.prototype.results = res
+    // console.log(vnavigation.NavigationMenu)
+    // console.log(new vnavigation.NavigationMenu().results)
+    // vnavigation.NavigationMenu.prototype.results = false;
+      // let mas = [
+        // payload[0].results[0].subject,
+        // payload[0].results[1].subject,
+        // payload[0].results[2].subject,
+      // ]
+      // state.discipline = mas
+      // console.log('payload - payload', state.discipline)
   },
   SET_SERVER_APPLICANTS(state, payload) {
     /*
