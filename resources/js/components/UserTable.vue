@@ -40,6 +40,7 @@
             <!-- <p class="table__pages-text">Страница: {{ $store.state.page.pagesApplicants }}</p> -->
             <!-- <p class="table__pages-text">Из: {{ total }}</p> -->
             <p class="table__pages-text">Всего: {{ $store.state.applicants.data.length }}</p>
+
           <!-- </div> -->
           <!-- <div class="pagination__table"> -->
             <!-- <a href="#" class="pagination__btn" v-if="page!=1" @click.prevent="page--">prev</a> -->
@@ -60,7 +61,7 @@
           <tbody>
             <!-- <TransitionGroup name="fade__group"> -->
               <!-- <tr class="table__tr" v-for="item in pagination" :key="item.id"> -->
-              <tr class="table__tr" v-for="item in pagination" :key="item.id">
+              <tr class="table__tr" v-for="item in pagination" :key="item.id" v-if="filteredList.length">
                 <td class="table__td">{{ item.data.id }}</td>
                 <td class="table__td">{{ item.data.name}} {{ item.data.surname }} {{ item.data.patronymic }}</td>
                 <td class="table__td">
@@ -68,6 +69,13 @@
                 </td>
                 <td class="table__td">{{item.data.results[0].grade + item.data.results[1].grade + item.data.results[2].grade}}</td>
               </tr>
+              <tr class="table__tr" v-else>
+                <td class="table__td">Пусто</td>
+                <td class="table__td">Пусто</td>
+                <td class="table__td">Пусто</td>
+                <td class="table__td">Пусто</td>
+              </tr>
+              <!-- <div class="table__tr-error" v-else>Ничего не найдено</div> -->
             <!-- </TransitionGroup> -->
           </tbody>
         </table>
@@ -79,8 +87,12 @@
       <div class="pagination__inner">
         <!-- {{ pagination }} -->
         <!-- {{ pagination.length }} -->
-        <button class="pagination__btn" v-if="pagination.length <= filteredList.length && $store.state.page.pagesApplicants!=1" @click.prevent="pagePrev">prev</button>
-        <button class="pagination__btn" v-if="pagination.length <= filteredList.length && $store.state.page.pagesApplicants < ($store.state.applicants.data.length / 10)" @click.prevent="pageNext">next</button>
+        <button class="pagination__btn" v-if="
+          $store.state.page.pagesApplicants != 1 && 
+          $store.state.page.pagesApplicants != 1" @click.prevent="pagePrev">prev</button>
+        <button class="pagination__btn" v-if="
+          $store.state.page.pagesApplicants < ($store.state.applicants.data.length / limit) &&
+          $store.state.page.pagesApplicants < (filteredList.length / limit)" @click.prevent="pageNext">next</button>
       </div>
     </div>
   </div>
@@ -109,13 +121,22 @@
         pages: [], // Массив страниц
       }
     },
+    watch: {
+      searchTable() {
+        /*
+          Метод запускается при изменении кнопки поиска
+        */
+        this.SET_PAGES_APPLICANTS_DEFAULT()
+      }
+    },
     methods: {
       // Получение функции из VUEX
       ...mapMutations([
         'DEL_DATA_APPLICANTS',    
         'SET_PAGES_APPLICANTS_NEXT',
         'SET_PAGES_APPLICANTS_PREV',
-        'SET_PAGES_APPLICANTS_DEFAULT' // Сброс страниц
+        'SET_PAGES_APPLICANTS_DEFAULT', // Сброс страниц
+        'SET_PAGES_APPLICANTS_PAYLOAD', // Переключение страницы на определенную
       ]),
       // Получение функции из VUEX
       // Получение функции из VUEX
@@ -179,9 +200,6 @@
         return array.slice(from, to) 
       }
     },
-    watch: {
-
-    },
     computed: {
       filteredList() {
         /*
@@ -206,7 +224,7 @@
         */
         return this.paginationCalc(this.filteredList)
         // return this.paginationCalc(this.$store.state.applicants.data)
-      }
+      },
     },
   }
 </script>
