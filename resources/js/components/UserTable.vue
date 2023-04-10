@@ -77,8 +77,10 @@
       </div> -->
     <div class="pagination">
       <div class="pagination__inner">
-        <button class="pagination__btn" v-if="$store.state.page.pagesApplicants!=1" @click.prevent="pagePrev">prev</button>
-        <button class="pagination__btn" v-if="$store.state.page.pagesApplicants < ($store.state.applicants.data.length / 10)" @click.prevent="pageNext">next</button>
+        <!-- {{ pagination }} -->
+        <!-- {{ pagination.length }} -->
+        <button class="pagination__btn" v-if="pagination.length <= filteredList.length && $store.state.page.pagesApplicants!=1" @click.prevent="pagePrev">prev</button>
+        <button class="pagination__btn" v-if="pagination.length <= filteredList.length && $store.state.page.pagesApplicants < ($store.state.applicants.data.length / 10)" @click.prevent="pageNext">next</button>
       </div>
     </div>
   </div>
@@ -113,6 +115,7 @@
         'DEL_DATA_APPLICANTS',    
         'SET_PAGES_APPLICANTS_NEXT',
         'SET_PAGES_APPLICANTS_PREV',
+        'SET_PAGES_APPLICANTS_DEFAULT' // Сброс страниц
       ]),
       // Получение функции из VUEX
       // Получение функции из VUEX
@@ -176,11 +179,23 @@
         return array.slice(from, to) 
       }
     },
+    watch: {
+
+    },
     computed: {
       filteredList() {
-        return this.$store.state.applicants.data.filter((e) => {
-          return e.data.name.toLowerCase().includes(this.searchTable.toLowerCase())
-        })
+        /*
+          Функция фильтрует таблицу
+          Входные параметры: 
+            Ничего
+          Выход: Отфильтрованный массив 
+        */
+        return this.$store.state.applicants.data.filter((item) =>
+          Object.values(item.data).some((value) =>
+            typeof value === "string" && value.toLowerCase().includes(this.searchTable.toLowerCase()) || 
+            typeof value === "number" && value.toString().includes(this.searchTable.toLowerCase())
+          )
+        )
       },
       pagination() {
         /*
@@ -189,7 +204,7 @@
             Ничего 
           Выход: Пагинация
         */
-       return this.paginationCalc(this.filteredList)
+        return this.paginationCalc(this.filteredList)
         // return this.paginationCalc(this.$store.state.applicants.data)
       }
     },

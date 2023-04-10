@@ -5,9 +5,9 @@
       <div class="test__content">
       <vUserTable :table="$store.state.applicants.data"/>
       </div>
-      <div class="test__info">
-          <Transition name="fade" mode="out-in">
-          <ul id="navigation__list" class="test__info-list navigation__list" v-if="true">
+      <Transition name="fade" mode="out-in">
+        <div class="test__info">
+          <ul id="navigation__list" class="test__info-list navigation__list">
             <li class="navigation__item" v-for="item in navigationListCalc" :key="item.id" :class="{'navigation__menu--active': item.active == true}">
               <a href="#" @click.prevent="item.active = !item.active" class="navigation__link">{{ item.name }}</a>
               <Transition name="fade" mode="out-in">
@@ -15,7 +15,6 @@
                   <li class="navigation__item-item" v-for="element in item.menu" :key="element.id" @click.prevent="sortStart(element, item.name)">
                     {{ element.title }}
                   </li>
-      <!-- console.log(new vnavigation.NavigationMenu().results) -->
                   <li class="navigation__item-item" @click.prevent="exampleGifsActive = !exampleGifsActive, exampleImage = item.image">
                     Посмотреть
                     {{ $store.state.applicants.discipline[0] }}
@@ -24,8 +23,8 @@
               </Transition>
             </li>
           </ul>
-        </Transition>
         </div>
+      </Transition>
     </div>
   </div>
 </template>
