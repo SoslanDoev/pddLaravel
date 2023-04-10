@@ -1,4 +1,5 @@
 export const sortBuiltIn = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование: Встроенная функция sort
     Функция сортирует элементы массива
@@ -16,12 +17,10 @@ export const sortBuiltIn = (arr, keyName = 'id') => {
   } else {
     arr = arr.sort((a, b) => a.data[keyName] > b.data[keyName]) 
   }
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `В зависимости от браузера`)
+  localStorage.setItem('complexity_2', ``)
+  localStorage.setItem('complexity_3', ``)
   return arr 
-  // let res = (keyName == 'score')
-    // ? arr.sort((a, b) => b.score - a.score)
-    // : arr.sort((a, b) => a.data[keyName] > b.data[keyName])
-  // const end = new Date().getTime()
-  // localStorage.setItem('speed', `${end-start}ms`)
-  // localStorage.setItem('complexity', `O(n^2)`)
-  // return res
 }

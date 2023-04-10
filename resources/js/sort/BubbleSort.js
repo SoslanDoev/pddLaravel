@@ -1,4 +1,5 @@
 export const bubbleSort = (arr, keyName = 'id') => { // Работает
+  const start= new Date().getTime()
   /*
     Наименование : Сортировка пузырьком
     Функция сортирует элементы массива 
@@ -7,7 +8,6 @@ export const bubbleSort = (arr, keyName = 'id') => { // Работает
       keyName - Метод сортировки по названию 
     Выход: отсортированный массив
   */
-  const start= new Date().getTime()
   if (arr.length < 2 || !arr) {return}
   for (let i = 0, endI = arr.length - 1; i < endI; i++) {
     let wasSwap = false
@@ -37,6 +37,8 @@ export const bubbleSort = (arr, keyName = 'id') => { // Работает
   }
   const end = new Date().getTime()
   localStorage.setItem('speed', `${end-start}ms`)
-  localStorage.setItem('complexity', `O(n^2)`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n^2)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return arr
 }

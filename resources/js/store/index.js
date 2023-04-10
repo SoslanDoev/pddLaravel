@@ -10,7 +10,9 @@ export default createStore({
     menuVisible: false,
     paginationCount: 0,
     speedFunction: '0ms',
-    complexityFunction: 'Пусто',
+    complexityFunction_1: 'Пусто',
+    complexityFunction_2: 'Пусто',
+    complexityFunction_3: 'Пусто',
     activeMethods: 'Пусто'
   },
   getters: {
@@ -20,7 +22,9 @@ export default createStore({
   },
   mutations: { // Синхронность
     GET_LOCAL_STORAGE(state) {
-      state.complexityFunction = localStorage.getItem('complexity')
+      state.complexityFunction_1 = localStorage.getItem('complexity_1')
+      state.complexityFunction_2 = localStorage.getItem('complexity_2')
+      state.complexityFunction_3 = localStorage.getItem('complexity_3')
       state.speedFunction = localStorage.getItem('speed')
       state.activeMethods = localStorage.getItem('methods') 
     },

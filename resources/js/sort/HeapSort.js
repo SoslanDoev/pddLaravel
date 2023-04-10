@@ -1,4 +1,5 @@
 export const heapSort = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование : Сортировка кучей
     Функция сортирует элементы массива 
@@ -21,6 +22,11 @@ export const heapSort = (arr, keyName = 'id') => {
     // вызываем процедуру heapify на уменьшенной куче
     heapify(arr, i, 0, keyName);
   }
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n\log n)`)
+  localStorage.setItem('complexity_2', `O(n\log n)`)
+  localStorage.setItem('complexity_3', `O(n)`)
   return arr;
 }
 

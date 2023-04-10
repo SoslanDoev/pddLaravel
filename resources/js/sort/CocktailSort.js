@@ -1,4 +1,5 @@
 export const cocktailSort = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование: Шейкерная сортировка
     Функция сортирует элементы массива 
@@ -54,5 +55,10 @@ export const cocktailSort = (arr, keyName = 'id') => {
     }
     left++;
   } while (swapped);
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n^2)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return arr;
 }

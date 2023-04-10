@@ -1,4 +1,5 @@
 export const quickSort = (array, keyName = 'id') => {
+  const start= new Date().getTime()
   // Создаем стек и добавляем начальный диапазон
   const stack = [[0, array.length - 1]];
   // Пока стек не пуст
@@ -49,5 +50,10 @@ export const quickSort = (array, keyName = 'id') => {
     stack.push([leftIndex, endIndex]);
   }
   // Возвращаем отсортированный массив
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n\log n)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return array;
 }

@@ -45,6 +45,8 @@ export const selectionSort = (arr, keyName, compare = defaultCompare) => {
   }
   const end = new Date().getTime()
   localStorage.setItem('speed', `${end-start}ms`)
-  localStorage.setItem('complexity', `O(n^2)`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n^2)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return arr;
 }

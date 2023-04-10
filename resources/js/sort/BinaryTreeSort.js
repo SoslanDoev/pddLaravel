@@ -5,8 +5,9 @@ class Node {
     this.right = null;
   }
 }
-
+let start = null
 export const binaryTreeSort = (arr, keyName = 'id') => {
+  start = new Date().getTime()
   /*
     Наименование: Сортировка c помощью двоичного дерева 
     Функция сортирует массив
@@ -19,6 +20,7 @@ export const binaryTreeSort = (arr, keyName = 'id') => {
   for (let i = 1; i < arr.length; i++) {
     addNode(root, new Node(arr[i]), keyName);
   }
+
   return traverseInOrder(root);
 }
 
@@ -75,5 +77,10 @@ function traverseInOrder(node, result = []) {
     traverseInOrder(node.right, result);
   }
 
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n\log n)`)
+  localStorage.setItem('complexity_3', `O(n)`)
   return result;
 }

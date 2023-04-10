@@ -1,4 +1,5 @@
 export const gnomeSort = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование : Гномья сортировка 
     Функция сортирует элементы массива 
@@ -48,5 +49,10 @@ export const gnomeSort = (arr, keyName = 'id') => {
       }
     }
   }
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n^2)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return arr;
 }

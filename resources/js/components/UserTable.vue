@@ -39,7 +39,7 @@
           <!-- <div class="table__pages-count__box" v-if="$store.state.applicants.data.length && total"> -->
             <!-- <p class="table__pages-text">Страница: {{ $store.state.page.pagesApplicants }}</p> -->
             <!-- <p class="table__pages-text">Из: {{ total }}</p> -->
-            <p class="table__pages-text">Всего: {{ $store.state.applicants.data.length }}</p>
+            <!-- <p class="table__pages-text">Всего: {{ $store.state.applicants.data.length }}</p> -->
 
           <!-- </div> -->
           <!-- <div class="pagination__table"> -->

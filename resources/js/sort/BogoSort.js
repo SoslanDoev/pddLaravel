@@ -1,4 +1,5 @@
 export const bogoSort = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование : Рандомная сортировка 
     Функция сортирует элементы массива 
@@ -51,5 +52,10 @@ export const bogoSort = (arr, keyName = 'id') => {
       return arr;
   }
 
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `Неограниченно`)
+  localStorage.setItem('complexity_2', `O(n!)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return sort(arr);
 }

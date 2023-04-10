@@ -1,4 +1,5 @@
 export const patienceSort = (arr, keyName='id') => {
+  const start= new Date().getTime()
   /*
     Наименование: Терпеливая сортировка
     Функция сортирует массив методом терпеливой сортировки 
@@ -88,5 +89,10 @@ export const patienceSort = (arr, keyName='id') => {
     stacks.unshift(mergedStack)
   }
   // Возвращаем отсортированный массив студентов
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n log n)`)
+  localStorage.setItem('complexity_3', `O(n)`)
   return stacks[0]
 }

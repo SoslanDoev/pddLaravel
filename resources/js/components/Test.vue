@@ -113,7 +113,6 @@
             new vnavigation.NavigationMenu(0, 'Предмет 1', vsort.insertionSort),
             new vnavigation.NavigationMenu(1, 'Предмет 2', vsort.insertionSort),
             new vnavigation.NavigationMenu(2, 'Предмет 3', vsort.insertionSort),
-            // data.results[keyName].grade
           ]),
           new vnavigation.Navigation('Кучей', 'bubble2.gif', [ // Работает
             new vnavigation.NavigationMenu('id', 'Id', vsort.heapSort),

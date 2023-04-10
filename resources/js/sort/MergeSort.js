@@ -1,4 +1,5 @@
 export const mergeSort = (arr, keyName = 'id') => {
+  const start= new Date().getTime()
   /*
     Наименование: Сортировка слиянием 
     Функция сортирует массив
@@ -49,5 +50,10 @@ export const mergeSort = (arr, keyName = 'id') => {
       }
     }
   }
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n\log n)`)
+  localStorage.setItem('complexity_2', `O(n\log n)`)
+  localStorage.setItem('complexity_3', `O(n)`)
   return arr;
 }

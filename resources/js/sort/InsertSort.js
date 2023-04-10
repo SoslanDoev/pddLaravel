@@ -1,4 +1,5 @@
 export const insertionSort = (arr, keyName) => {
+  const start= new Date().getTime()
   /*
     Наименование: Сортировка вставками
     Функция сортирует массив методом вставками 
@@ -28,5 +29,10 @@ export const insertionSort = (arr, keyName) => {
     }
     arr[j + 1] = current;
   }
+  const end = new Date().getTime()
+  localStorage.setItem('speed', `${end-start}ms`)
+  localStorage.setItem('complexity_1', `O(n^2)`)
+  localStorage.setItem('complexity_2', `O(n^2)`)
+  localStorage.setItem('complexity_3', `O(1)`)
   return arr;
 }
